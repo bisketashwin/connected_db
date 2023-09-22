@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../utils/bottom_navigation.dart';
-import '../utils/drawer_1.dart';
+// import 'package:google_fonts/google_fonts.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'home_sreen.dart';
+// import '../utils/drawer_1.dart';
 import '../utils/widgets.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class Tab1 extends StatefulWidget {
+  const Tab1({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Tab1> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MyHomePageState extends State<Tab1> {
+  // int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  // void _incrementCounter() {
+  //   setState(() {
+  //     _counter++;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
