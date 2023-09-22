@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:material3_app/screens/tab_2.dart';
+import 'package:material3_app/screens/tab_1_screen.dart';
+import 'package:material3_app/screens/tab_2_screen.dart';
 import 'package:material3_app/utils/drawer_1.dart';
 
 // import '../screens/my_home copy.dart';
-import '../screens/my_home.dart';
+
 // import 'drawer_2.dart'
 
-class NavigationExample extends StatefulWidget {
-  const NavigationExample({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<NavigationExample> createState() => _NavigationExampleState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _NavigationExampleState extends State<NavigationExample> {
+class _HomeScreenState extends State<HomeScreen> {
   int currentPageIndex = 0;
 
   @override
@@ -66,7 +67,7 @@ class _NavigationExampleState extends State<NavigationExample> {
         ],
       ),
       body: <Widget>[
-        const MyHomePage(title: 'Flutter Demo Home Page'),
+        const Tab1(title: 'Flutter Demo Home Page'),
         const Tab2(title: 'some more widgets'),
         Container(
           color: Colors.blue,

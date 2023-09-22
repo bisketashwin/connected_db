@@ -1,7 +1,7 @@
-import 'package:material3_app/screens/home_sreen.dart';
-
 import 'app_routes.dart';
-import 'package:get/get.dart'; // Import for GetX
+import 'package:get/get.dart';
+
+import 'screens/home_screen.dart'; // Import for GetX
 
 // IMP: Get X to work: this file is important
 
