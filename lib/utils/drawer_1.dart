@@ -1,44 +1,50 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class MyDrawer1 extends StatefulWidget {
-  @override
-  _MyDrawer1State createState() => _MyDrawer1State();
-}
-
-class _MyDrawer1State extends State<MyDrawer1> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class MyDrawer1 extends StatelessWidget {
+  const MyDrawer1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
+        // backgroundColor: Theme.of(context).colorScheme.primary.withAlpha(192),
+        child: Container(
+      color: Theme.of(context).colorScheme.secondary,
       child: ListView(
         children: <Widget>[
           DrawerHeader(
-            child: Text('My Drawer'),
+            child: Text('User Name'),
           ),
           ListTile(
-            title: Text('Item 1'),
-            selected: _selectedIndex == 0,
-            onTap: () => _onItemTapped(0),
+            onTap: () => Page1(),
+            leading: FaIcon(FontAwesomeIcons.solidAddressCard),
+            title: Text('Your Profile Edit'),
           ),
           ListTile(
-            title: Text('Item 2'),
-            selected: _selectedIndex == 1,
-            onTap: () => _onItemTapped(1),
+            onTap: () => Page1(),
+            leading: FaIcon(FontAwesomeIcons.buildingWheat),
+            title: Text('your Comapny'),
           ),
           ListTile(
-            title: Text('Item 3'),
-            selected: _selectedIndex == 2,
-            onTap: () => _onItemTapped(2),
+            onTap: () => Page1(),
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
           ),
+          SizedBox(
+            height: 50,
+          ),
+          ListTile(
+            onTap: () {
+              //
+            },
+            leading: FaIcon(FontAwesomeIcons.rightFromBracket),
+            title: Text('Log Out'),
+          )
         ],
       ),
-    );
+    ));
   }
 }
+
+class Page1 {}

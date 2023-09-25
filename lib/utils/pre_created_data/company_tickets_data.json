@@ -1,0 +1,56 @@
+[ 
+  
+    {
+      "companyName": "Acme Corporation",
+      "commodity": "Wheat",
+      "quantity": "100 MT",
+      "contactPerson": "Prakas Kumar Mitra",
+      "phoneNumber": "76545 45632",
+      "pickUpAddress": {
+        "street": "Sy 79/6, Muppadighatta, Madhure Hobli",
+        "villageOrTaluk": "Dodballapur",
+        "zilla": "Bengaluru Rural",
+        "state": "Karnataka",
+        "pincode": "561204",
+        "googleMapLocation": "https://maps.app.goo.gl/wJzH77fSxGJ4R7Gw6"
+      },
+      "destinationAddress": {
+        "firmName": "Access Warehousing",
+        "street": "4th Block, 37/3, 80 Feet Ring Rd, 4th Block, Stage 1, KHB Colony",
+        "villageOrTaluk": "Basaveshwar Nagar",
+        "zilla": "Bengaluru City",
+        "state": "Karnataka ",
+        "pincode": "560079",
+        "googleMapLocation": "https://maps.app.goo.gl/akW4WghWvEwvZvut6"
+      },
+      "pickupDate": "2023-09-26"
+    },
+
+    
+    {
+      "companyName": "MSR Fruits Farm",
+      "commodity": "Grapes",
+      "quantity": "120 MT",
+      "contactPerson": "Ramesh Patil",
+      "phoneNumber": "9632115645",
+      "pickUpAddress": {
+        "street": "Chikka Kukkanahalli, Guddarahalli, hearaghatta",
+        "villageOrTaluk": "hearaghatta",
+        "zilla": "Bengaluru Rural",
+        "state": "Karnataka",
+        "pincode": "560089",
+        "googleMapLocation": "https://maps.app.goo.gl/aGY9oyaXLxN3jmpa7"
+      },
+      "destinationAddress": {
+        "firmName": "Isiri Cold Storage",
+        "street": "Sy, 74, 86 & 87, NH-4, Sompura, Industrial Area, Dobbaspet",
+        "villageOrTaluk": "Nelamangala",
+        "zilla": "Bengaluru Rural",
+        "state": "Karnataka",
+        "pincode": "562111",
+        "googleMapLocation": "https://maps.google.com/?q=123+Main+Street,+San+Francisco,+CA+94105"
+      },
+      "pickupDate": "2023-09-27"
+    }
+  ]
+  

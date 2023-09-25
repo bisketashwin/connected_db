@@ -1,7 +1,7 @@
 // main.dart
 
 import 'package:flutter/material.dart';
-import 'app_screens.dart';
+import 'app_views.dart';
 // import 'screens/home_sreen.dart';
 import 'theme/my_new_theme.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +31,7 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  // Get.put(CommodityTicketController());
 
   runApp(const MyApp());
 }

@@ -4,7 +4,7 @@ class Routes {
   // static const THEM_TEST = '/themTest';
   // static const MYLAYOUT1 = '/myLayout1';
   // static const MYLAYOUT2 = '/myLayout2';
-  // static const LOGIN = '/login';
+  static const LOGIN = '/login';
   static const HOME = '/home';
   // static const SETTINGS = '/settings';
   // static const PROFILE_EDIT = '/profileEdit';

@@ -1,19 +1,29 @@
+import 'utils/controllers/commodity_ticket_controller.dart';
+import 'package:material3_app/views/log_in_view.dart';
+
 import 'app_routes.dart';
 import 'package:get/get.dart';
 
-import 'screens/home_screen.dart'; // Import for GetX
+import 'utils/controllers/user_controller.dart';
+import 'views/home_view.dart'; // Import for GetX
 
 // IMP: Get X to work: this file is important
 
 class AppScreens {
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.LOGIN;
   static final List<GetPage> routes = [
     // GetPage(name: Routes.THEM_TEST, page: () => const themingTest()),
     // GetPage(name: Routes.MYLAYOUT1, page: () => const MyLayout1()),
     // GetPage(name: Routes.MYLAYOUT2, page: () => const MyLayout2()),
-    // GetPage(name: Routes.LOGIN, page: () => const LoginView()),
+    GetPage(
+      name: Routes.LOGIN,
+      page: () => LoginFormView(usersController: UsersController()),
+    ),
     // GetPage(name: Routes.SIGNUP, page: () => SignUpView()),
-    GetPage(name: Routes.HOME, page: () => const HomeScreen()),
+    GetPage(
+      name: Routes.HOME,
+      page: () => const HomeView(),
+    ),
     // GetPage(name: Routes.SETTINGS, page: () => const Settings()),
     // GetPage(name: Routes.PROFILE_EDIT, page: () => const ProfileEdit()),
     // GetPage(name: Routes.TAB1_SCREEN1, page: () => const Tab1View()),
