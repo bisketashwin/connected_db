@@ -17,7 +17,7 @@ class AppScreens {
     // GetPage(name: Routes.MYLAYOUT2, page: () => const MyLayout2()),
     GetPage(
       name: Routes.LOGIN,
-      page: () => LoginFormView(usersController: UsersController()),
+      page: () => LoginFormView(),
     ),
     // GetPage(name: Routes.SIGNUP, page: () => SignUpView()),
     GetPage(

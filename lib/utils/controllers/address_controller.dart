@@ -1,23 +1,24 @@
-import 'package:get/get.dart';
+import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 import '../models/address_model.dart';
 
-class AddressController extends GetxController {
+class AddressController extends ChangeNotifier {
   final List<Address> _addresses = [];
 
   List<Address> get addresses => _addresses;
 
   void addAddress(Address address) {
     _addresses.add(address);
-    update();
+    notifyListeners();
   }
 
   void modifyAddress(Address oldAddress, Address newAddress) {
     _addresses[_addresses.indexOf(oldAddress)] = newAddress;
-    update();
+    notifyListeners();
   }
 
   void deleteAddress(Address address) {
     _addresses.remove(address);
-    update();
+    notifyListeners();
   }
 }

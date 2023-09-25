@@ -7,10 +7,7 @@ import '../utils/controllers/user_controller.dart';
 // import '../utils/models/user_model.dart';
 
 class LoginFormView extends StatefulWidget {
-  final UsersController usersController;
-
-  const LoginFormView({Key? key, required this.usersController})
-      : super(key: key);
+  const LoginFormView({Key? key}) : super(key: key);
 
   @override
   _LoginFormViewState createState() => _LoginFormViewState();
@@ -130,18 +127,7 @@ class _LoginFormViewState extends State<LoginFormView> {
                   size: 24.0,
                 ),
                 label: const Text('Log In'),
-                onPressed: isChecked
-                    ? () {
-                        // Get the user from the users controller.
-                        var user =
-                            widget.usersController.getUserByUsername(username);
-
-                        // If the user is found, show a pop-up.
-                        if (user != null) {
-                          Get.toNamed(Routes.HOME);
-                        }
-                      }
-                    : null,
+                onPressed: () => Get.toNamed(Routes.HOME),
               ),
             ],
           ),
