@@ -1,5 +1,6 @@
+//address_controller.dart
 import 'package:flutter/foundation.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 import '../models/address_model.dart';
 
 class AddressController extends ChangeNotifier {
@@ -7,7 +8,15 @@ class AddressController extends ChangeNotifier {
 
   List<Address> get addresses => _addresses;
 
+  // Add a function to generate a nickname from the company name.
+  String generateNicknameFromCompanyName(Address address) {
+    String firmName = address.firmName;
+    return firmName.substring(0, 3).toUpperCase();
+  }
+
   void addAddress(Address address) {
+    // Generate a nickname from the company name.
+    address.nickName = generateNicknameFromCompanyName(address);
     _addresses.add(address);
     notifyListeners();
   }

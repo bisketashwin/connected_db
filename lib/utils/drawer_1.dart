@@ -1,4 +1,4 @@
-import 'package:dynamic_color/dynamic_color.dart';
+// import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -13,33 +13,33 @@ class MyDrawer1 extends StatelessWidget {
       color: Theme.of(context).colorScheme.secondary,
       child: ListView(
         children: <Widget>[
-          DrawerHeader(
+          const DrawerHeader(
             child: Text('User Name'),
           ),
           ListTile(
             onTap: () => Page1(),
-            leading: FaIcon(FontAwesomeIcons.solidAddressCard),
-            title: Text('Your Profile Edit'),
+            leading: const FaIcon(FontAwesomeIcons.solidAddressCard),
+            title: const Text('Your Profile Edit'),
           ),
           ListTile(
             onTap: () => Page1(),
-            leading: FaIcon(FontAwesomeIcons.buildingWheat),
-            title: Text('your Comapny'),
+            leading: const FaIcon(FontAwesomeIcons.buildingWheat),
+            title: const Text('your Comapny'),
           ),
           ListTile(
             onTap: () => Page1(),
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
+            leading: const Icon(Icons.settings),
+            title: const Text('Settings'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           ListTile(
             onTap: () {
               //
             },
-            leading: FaIcon(FontAwesomeIcons.rightFromBracket),
-            title: Text('Log Out'),
+            leading: const FaIcon(FontAwesomeIcons.rightFromBracket),
+            title: const Text('Log Out'),
           )
         ],
       ),

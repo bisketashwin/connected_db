@@ -27,7 +27,7 @@ class _MyHomePageState extends State<Tab1> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: [
+        children: const [
           /////// welcome message
           WelcomeMessage(),
           AddCommodityCards2(),
@@ -50,14 +50,14 @@ class _WelcomeMessageState extends State<WelcomeMessage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 20, top: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
       child: Column(
         children: [
           RichText(
             text: TextSpan(
                 style: Theme.of(context).textTheme.headlineMedium,
                 children: [
-                  TextSpan(
+                  const TextSpan(
                       text: 'Hi ',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   WidgetSpan(
@@ -65,14 +65,14 @@ class _WelcomeMessageState extends State<WelcomeMessage> {
                     Icons.waving_hand,
                     color: Theme.of(context).primaryColor,
                   )),
-                  TextSpan(text: '\n'),
-                  TextSpan(
+                  const TextSpan(text: '\n'),
+                  const TextSpan(
                       text:
                           'welcone you can manage and trade commodities here!'),
                 ]),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 10),
             child: RichText(
               text: TextSpan(
                   // margin: const EdgeInsets.only(top: 10),
@@ -104,8 +104,8 @@ class _AddCommodityCardsState extends State<AddCommodityCards> {
       height: 150.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.only(left: 15, right: 20),
-        children: [
+        padding: const EdgeInsets.only(left: 15, right: 20),
+        children: const [
           AddCommodityCard1(
               icon: Icons.calculate,
               width: 300,
@@ -138,8 +138,8 @@ class _AddCommodityCards2State extends State<AddCommodityCards2> {
       height: 500.0,
       child: ListView(
         // scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.only(left: 15, right: 20),
-        children: [
+        padding: const EdgeInsets.only(left: 15, right: 20),
+        children: const [
           AddCommodityCard2(
               inOut: 'out',
               // width: 300,

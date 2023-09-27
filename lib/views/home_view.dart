@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:material3_app/utils/controllers/commodity_ticket_controller.dart';
 import 'package:material3_app/views/tab_1_view.dart';
 import 'package:material3_app/views/tab_2_view.dart';
 import 'package:material3_app/utils/drawer_1.dart';
@@ -20,7 +18,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       drawerEnableOpenDragGesture: true,
       extendBodyBehindAppBar: true,
-      drawer: MyDrawer1(),
+      drawer: const MyDrawer1(),
       appBar: AppBar(
         elevation: 0,
         shadowColor: Colors.transparent,
@@ -30,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
           builder: (BuildContext context) {
             return IconButton(
               icon: const Icon(Icons.person_2),
-              padding: EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.only(left: 10),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },

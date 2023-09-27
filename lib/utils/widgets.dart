@@ -23,19 +23,19 @@ class _SingleChoiceState extends State<SingleChoice> {
               'Day',
               style: Theme.of(context).textTheme.bodySmall,
             ),
-            icon: Icon(Icons.calendar_view_day)),
+            icon: const Icon(Icons.calendar_view_day)),
         ButtonSegment<Calendar>(
             value: Calendar.week,
             label: Text('Week', style: Theme.of(context).textTheme.bodySmall),
-            icon: Icon(Icons.calendar_view_week)),
+            icon: const Icon(Icons.calendar_view_week)),
         ButtonSegment<Calendar>(
             value: Calendar.month,
             label: Text('Month', style: Theme.of(context).textTheme.bodySmall),
-            icon: Icon(Icons.calendar_view_month)),
+            icon: const Icon(Icons.calendar_view_month)),
         ButtonSegment<Calendar>(
             value: Calendar.year,
             label: Text('Year', style: Theme.of(context).textTheme.bodySmall),
-            icon: Icon(Icons.calendar_today)),
+            icon: const Icon(Icons.calendar_today)),
       ],
       selected: <Calendar>{calendarView},
       onSelectionChanged: (Set<Calendar> newSelection) {
@@ -99,7 +99,8 @@ class AddCommodityCard1 extends StatelessWidget {
   final String bodyText;
   final double width;
 
-  AddCommodityCard1({
+  const AddCommodityCard1({
+    super.key,
     required this.icon,
     required this.header,
     required this.bodyText,
@@ -121,12 +122,12 @@ class AddCommodityCard1 extends StatelessWidget {
               Row(
                 children: [
                   Icon(icon, size: 30.0),
-                  SizedBox(width: 10.0),
+                  const SizedBox(width: 10.0),
                   // Header
                   Text(header, style: Theme.of(context).textTheme.titleSmall),
                 ],
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               // Body text
               Text(bodyText, style: Theme.of(context).textTheme.bodyMedium),
             ],
@@ -144,7 +145,8 @@ class AddCommodityCard2 extends StatelessWidget {
   final String bodyText;
   // final double width;
   final String inOut;
-  AddCommodityCard2({
+  const AddCommodityCard2({
+    super.key,
     // required this.icon,
     required this.inOut,
     required this.header,
@@ -181,25 +183,22 @@ class AddCommodityCard2 extends StatelessWidget {
                 // Icon(icon, size: 40.0),
               ],
             ),
-            SizedBox(width: 10.0),
+            const SizedBox(width: 10.0),
             Expanded(
               child: Center(
-                child: Container(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(header,
-                          style: Theme.of(context).textTheme.titleSmall),
-                      Text(
-                        bodyText,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        maxLines: 1, // Allow unlimited lines
-                        // textAlign: TextAlign.justify,
-                        overflow: TextOverflow.clip,
-                      ),
-                    ],
-                  ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(header, style: Theme.of(context).textTheme.titleSmall),
+                    Text(
+                      bodyText,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      maxLines: 1, // Allow unlimited lines
+                      // textAlign: TextAlign.justify,
+                      overflow: TextOverflow.clip,
+                    ),
+                  ],
                 ),
               ),
             ),

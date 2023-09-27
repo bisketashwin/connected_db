@@ -79,7 +79,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Example'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -133,8 +133,8 @@ class UserName extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        hintText: '${context.watch<UserNameProvider>().username}',
+        border: const OutlineInputBorder(),
+        hintText: context.watch<UserNameProvider>().username,
       ),
       onChanged: (value) {
         context.read<UserNameProvider>().save(value);

@@ -1,15 +1,16 @@
 // commodity_ticket_model.dart
 
-import 'package:get/get.dart';
 import 'address_model.dart';
+import 'commodity_owner_model.dart';
 
-class CommodityTicket extends GetxController {
+class CommodityTicket {
   String id;
-  final String companyName;
-  final String commodity;
-  final String quantity;
-  final String contactPerson;
-  final String phoneNumber;
+  String ticketNumber;
+  final CommodityOwner commodityOwner;
+  String commodity;
+  String quantity;
+  String contactPerson;
+  String phoneNumber;
 
   // Add the address fields.
   final Address pickUpAddress;
@@ -19,8 +20,9 @@ class CommodityTicket extends GetxController {
   final DateTime pickupDate;
 
   CommodityTicket({
-    required this.id,
-    required this.companyName,
+    this.id = '',
+    this.ticketNumber = 'Not Generated',
+    required this.commodityOwner,
     required this.commodity,
     required this.quantity,
     required this.contactPerson,
@@ -33,7 +35,9 @@ class CommodityTicket extends GetxController {
   factory CommodityTicket.fromJson(Map<String, dynamic> json) {
     return CommodityTicket(
       id: json['id'] as String,
-      companyName: json['companyName'] as String,
+      ticketNumber: json['ticketNumber'] as String,
+      commodityOwner: CommodityOwner.fromJson(
+          json['commodityOwner'] as Map<String, dynamic>),
       commodity: json['commodity'] as String,
       quantity: json['quantity'] as String,
       contactPerson: json['contactPerson'] as String,
@@ -49,7 +53,8 @@ class CommodityTicket extends GetxController {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'companyName': companyName,
+      'ticketNumber': ticketNumber,
+      'commodityOwner': commodityOwner.toJson(),
       'commodity': commodity,
       'quantity': quantity,
       'contactPerson': contactPerson,

@@ -1,10 +1,12 @@
-import 'utils/controllers/commodity_ticket_controller.dart';
+// import 'utils/controllers/commodity_ticket_controller.dart';
+// ignore_for_file: constant_identifier_names
+
 import 'package:material3_app/views/log_in_view.dart';
 
 import 'app_routes.dart';
 import 'package:get/get.dart';
 
-import 'utils/controllers/user_controller.dart';
+// import 'utils/controllers/user_controller.dart';
 import 'views/home_view.dart'; // Import for GetX
 
 // IMP: Get X to work: this file is important
@@ -17,7 +19,7 @@ class AppScreens {
     // GetPage(name: Routes.MYLAYOUT2, page: () => const MyLayout2()),
     GetPage(
       name: Routes.LOGIN,
-      page: () => LoginFormView(),
+      page: () => const LoginFormView(),
     ),
     // GetPage(name: Routes.SIGNUP, page: () => SignUpView()),
     GetPage(

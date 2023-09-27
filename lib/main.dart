@@ -1,15 +1,19 @@
 // main.dart
 
 import 'package:flutter/material.dart';
-import 'package:material3_app/utils/controllers/address_controller.dart';
-import 'package:material3_app/utils/controllers/commodity_ticket_controller.dart';
 import 'package:provider/provider.dart';
 import 'app_views.dart';
-// import 'screens/home_sreen.dart';
 import 'theme/my_new_theme.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+/// controller
+import 'utils/controllers/address_controller.dart';
+import 'utils/controllers/commodity_ticket_controller.dart';
+import 'utils/controllers/commodity_owner_controller.dart';
+
+/// models
+import 'utils/models/commodity_owner_model.dart';
 import 'utils/models/address_model.dart';
 import 'utils/models/commodity_ticket_model.dart';
 
@@ -60,6 +64,8 @@ void main() async {
             create: (_) => CommodityTicketController()),
         ChangeNotifierProvider<AddressController>(
             create: (_) => AddressController()),
+        ChangeNotifierProvider<CommodityOwnerController>(
+            create: (_) => CommodityOwnerController()),
       ],
       child: const MyApp(),
     ),
@@ -67,6 +73,8 @@ void main() async {
 }
 
 class DummyCommodityTicketCreator extends StatelessWidget {
+  const DummyCommodityTicketCreator({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Create dummy commodity tickets.
@@ -83,8 +91,10 @@ void createDummyCommodityTickets(BuildContext context) {
 
   // Add the dummy commodity tickets.
   commodityTicketController.addCommodityTicket(CommodityTicket(
-    id: '',
-    companyName: 'Acme Corporation',
+    commodityOwner: CommodityOwner(
+      firmName: 'Acme Corporation',
+      proprietorName: 'Rajesh Fegal',
+    ),
     commodity: 'Wheat',
     quantity: '100 MT',
     contactPerson: 'Prakas Kumar Mitra',
@@ -108,12 +118,13 @@ void createDummyCommodityTickets(BuildContext context) {
       pincode: '560079',
       googleMapLocation: 'https://maps.app.goo.gl/akW4WghWvEwvZvut6',
     ),
-    pickupDate: DateTime.parse('2023-09-26'),
+    // pickupDate: dateFormat.parse('30-October-2023 8:00 am'),
+    pickupDate: DateTime.parse('2023-10-03 08:00:00Z'),
   ));
 
   commodityTicketController.addCommodityTicket(CommodityTicket(
-    id: '',
-    companyName: 'MSR Fruits Farm',
+    commodityOwner: CommodityOwner(
+        firmName: 'MSR Fruits Farm', proprietorName: 'Ujjanagowda Patil'),
     commodity: 'Grapes',
     quantity: '120 MT',
     contactPerson: 'Ramesh Patil',
@@ -137,6 +148,7 @@ void createDummyCommodityTickets(BuildContext context) {
       googleMapLocation:
           'https://maps.google.com/?q=123+Main+Street,+San+Francisco,+CA+94105',
     ),
-    pickupDate: DateTime.parse('2023-09-27'),
+    pickupDate: DateTime.parse('2023-09-27 16:00:00Z'),
+    // pickupDate: dateFormat.parse('23-September-2023 12:00 pm'),
   ));
 }

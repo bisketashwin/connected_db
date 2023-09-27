@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../app_routes.dart';
-import '../utils/controllers/user_controller.dart';
+// import '../utils/controllers/user_controller.dart';
 // import '../utils/models/user_model.dart';
 
 class LoginFormView extends StatefulWidget {
@@ -33,7 +33,7 @@ class _LoginFormViewState extends State<LoginFormView> {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     title: const Text('User Found'),
-                    content: Text('The user `${username}` was found.'),
+                    content: Text('The user `$username` was found.'),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.of(context).pop(),
@@ -46,7 +46,7 @@ class _LoginFormViewState extends State<LoginFormView> {
             },
             child: Padding(
               padding: const EdgeInsets.only(right: 20),
-              child: Container(
+              child: SizedBox(
                 height: 30,
                 width: 30,
                 child: SvgPicture.asset(
@@ -99,7 +99,7 @@ class _LoginFormViewState extends State<LoginFormView> {
                 onChanged: (value) => password = value,
               ),
               Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 20),
+                padding: const EdgeInsets.only(top: 20, bottom: 20),
                 child: Row(
                   children: [
                     Checkbox(
@@ -110,12 +110,10 @@ class _LoginFormViewState extends State<LoginFormView> {
                         });
                       },
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Center(
-                        child: Container(
-                          child: Text(
-                              'I understand and allow use of all of the information for testing purpose and dummy app use'),
-                        ),
+                        child: Text(
+                            'I understand and allow use of all of the information for testing purpose and dummy app use'),
                       ),
                     ),
                   ],
