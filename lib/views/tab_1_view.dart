@@ -32,6 +32,7 @@ class _MyHomePageState extends State<Tab1> {
           WelcomeMessage(),
           AddCommodityCards2(),
 
+          ///Commodity Cards the drag effect still there on scroll of cards need to fix it later
           /// cards
         ],
       ),
@@ -51,7 +52,9 @@ class _WelcomeMessageState extends State<WelcomeMessage> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
-      child: Column(
+      child: ListView(
+        primary: false, // makes scrollablity false
+        shrinkWrap: true,
         children: [
           RichText(
             text: TextSpan(
@@ -100,26 +103,25 @@ class AddCommodityCards extends StatefulWidget {
 class _AddCommodityCardsState extends State<AddCommodityCards> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 150.0,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.only(left: 15, right: 20),
-        children: const [
-          AddCommodityCard1(
-              icon: Icons.calculate,
-              width: 300,
-              header: '20 MT Spanish Cotton',
-              bodyText:
-                  'Moaterial is in transit will reach the ware house on 19th Sep'),
-          AddCommodityCard1(
-              icon: Icons.calculate,
-              width: 300,
-              header: '20 MT Spanish Cotton',
-              bodyText:
-                  'Moaterial is in transit will reach the ware house on 19th Sep'),
-        ],
-      ),
+    return ListView(
+      primary: false, // makes scrollablity false
+      shrinkWrap: true,
+      // scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.only(left: 15, right: 20),
+      children: const [
+        AddCommodityCard1(
+            icon: Icons.calculate,
+            width: 300,
+            header: '20 MT Spanish Cotton',
+            bodyText:
+                'Moaterial is in transit will reach the ware house on 19th Sep'),
+        AddCommodityCard1(
+            icon: Icons.calculate,
+            width: 300,
+            header: '20 MT Spanish Cotton',
+            bodyText:
+                'Moaterial is in transit will reach the ware house on 19th Sep'),
+      ],
     );
   }
 }
