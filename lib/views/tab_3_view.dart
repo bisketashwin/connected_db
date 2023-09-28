@@ -32,41 +32,7 @@ class _MyAppState extends State<Tab3> {
       shrinkWrap: true,
       itemCount: list1.length,
       itemBuilder: (context, index) {
-        return Card(
-          child: InkWell(
-            onTap: () {
-              // Set the visibility state of all items in the list to false, except for the item that was tapped.
-              for (int i = 0; i < _showlist1.length; i++) {
-                _showlist1[i] = i == index;
-              }
-
-              // Set the state.
-              setState(() {});
-            },
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(list1[index]),
-                Visibility(
-                  visible: _showlist1[index],
-                  child: const Column(
-                    children: [
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text("This is a hidden text string."),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
-            ),
-          ),
-        );
+        return myCard(type: 'only1', index: index, myList: _showlist1);
       },
     );
   }
@@ -77,43 +43,52 @@ class _MyAppState extends State<Tab3> {
       shrinkWrap: true,
       itemCount: list2.length,
       itemBuilder: (context, index) {
-        return Card(
-          child: InkWell(
-            onTap: () {
-              // Set the visibility state of all items in the list to false, except for the item that was tapped.
-              // for (int i = 0; i < _showlist2.length; i++) {
-              //   _showlist2[i] = i == index;
-              // }
-              _showlist2[index] = !_showlist2[index];
-
-              // Set the state.
-              setState(() {});
-            },
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(list2[index]),
-                Visibility(
-                  visible: _showlist2[index],
-                  child: const Column(
-                    children: [
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text("This is a hidden text string."),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
-            ),
-          ),
-        );
+        return myCard(type: 'any', index: index, myList: _showlist2);
       },
+    );
+  }
+
+  Widget myCard({type = 'any', index, required myList}) {
+    // var myList;
+    return Card(
+      child: InkWell(
+        onTap: () {
+          switch (type) {
+            case 'only1':
+              for (int i = 0; i < myList.length; i++) {
+                myList[i] = i == index;
+              }
+              break;
+            default:
+              myList[index] = !myList[index];
+          }
+
+          // Set the state. wihtout this the UI would not refresh
+          setState(() {});
+        },
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 30,
+            ),
+            Text(list2[index]),
+            Visibility(
+              visible: myList[index],
+              child: const Column(
+                children: [
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Text("This is a hidden text string."),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+          ],
+        ),
+      ),
     );
   }
 
