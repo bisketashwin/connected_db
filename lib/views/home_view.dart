@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material3_app/views/tab_1_view.dart';
 import 'package:material3_app/views/tab_2_view.dart';
 import 'package:material3_app/views/tab_3_view.dart';
-import 'package:material3_app/utils/drawer_1.dart';
+import 'package:material3_app/utils/widgets/drawer_1.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);

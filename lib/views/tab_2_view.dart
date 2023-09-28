@@ -9,16 +9,24 @@ import '../utils/models/commodity_ticket_model.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../utils/widgets.dart';
+
 class Tab2 extends StatefulWidget {
   final String title;
 
   const Tab2({Key? key, required this.title}) : super(key: key);
 
   @override
-  State<Tab2> createState() => _Tab2State();
+  // State<Tab2> createState() => _Tab2State();
+  _Tab2State createState() => _Tab2State();
 }
 
 class _Tab2State extends State<Tab2> {
+  Map<String, bool> _showDetails = {
+    'card 1': false,
+    'card info': false,
+    'card random': false,
+  };
   @override
   Widget build(BuildContext context) {
     List<CommodityTicket> commodityTickets =
@@ -46,7 +54,7 @@ class _Tab2State extends State<Tab2> {
                 return commodityTicketCard(context, commodityTickets, index);
               },
             ),
-            cardWithBanner(context),
+            cardWithBanner(context, _showDetails),
           ],
         ),
       ),
@@ -150,100 +158,14 @@ Widget commodityTicketCard(context, commodityTickets, index) {
   );
 }
 
-Widget iconLabel(
-    {String type = '',
-    String label = '',
-    required context,
-    String mainText = '',
-    required String textSize,
-    required Color color}) {
-  TextStyle style;
-  double iconSize;
-  IconData myIcon;
-  switch (type) {
-    case 'Date Time':
-      myIcon = FontAwesomeIcons.calendarDay;
-      style = Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: color,
-          );
-      iconSize = 20.0;
-      break;
-    case 'Transport':
-      myIcon = FontAwesomeIcons.truck;
-      style = Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: color,
-          );
-      iconSize = 20.0;
-      break;
-    default:
-      // by default it 'Ticket Number'
-      myIcon = FontAwesomeIcons.ticket;
-      style = Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: color,
-          );
-      iconSize = 20.0;
-  }
-  switch (textSize) {
-    case 'bodyMedium':
-      style = Theme.of(context).textTheme.bodyMedium!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: color,
-          );
-      iconSize = 16.0;
-      break;
-    case 'Transport':
-      style = Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: color,
-          );
-      iconSize = 20.0;
-      break;
-    default:
-      // by default it 'bodyLarge'
-      style = Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: color,
-          );
-      iconSize = 20.0;
-  }
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Visibility(
-        visible: label == '' ? false : true,
-        child: Text(label),
-      ),
-      RichText(
-        text: TextSpan(
-          children: [
-            WidgetSpan(
-              child: FaIcon(
-                myIcon,
-                size: iconSize,
-                color: color,
-              ),
-            ),
-            TextSpan(
-              text: ' $mainText',
-              style: style,
-            ),
-          ],
-        ),
-      ),
-    ],
-  );
-}
-
-Widget cardWithBanner(BuildContext context) {
+Widget cardWithBanner(BuildContext context, _showDetails) {
   // var color1 = Theme.of(context).colorScheme.onBackground.withOpacity(0.6);
-  bool showDetails = false;
+
   return GestureDetector(
     onTap: () {
-      showDetails = !showDetails;
-      debugPrint('showDetails = $showDetails');
+      _showDetails['card 1'] = !_showDetails['card 1'];
+      debugPrint('_showDetails[card 1] = ${_showDetails['card 1']}');
+      // setState(() {});
     },
     child: Card(
       color: Colors.orange,
@@ -258,94 +180,18 @@ Widget cardWithBanner(BuildContext context) {
           topBannerStatus(context, 1),
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 20),
-            child: Text(
-                'This would be visible all time. showDetails = $showDetails'),
+            child: Text('This would be visible all time. showDetails'),
           ),
           Visibility(
-            visible: showDetails,
+            visible: _showDetails['card 1'],
             child: Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
-              child:
-                  Text('This would show only if showDetails is $showDetails'),
+              child: Text(
+                  'This would show only if showDetails is ${_showDetails['card 1']}'),
             ),
           ),
         ],
       ),
     ),
   );
-}
-
-Widget topBannerStatus(BuildContext context, int status) {
-  var color1 = Theme.of(context).colorScheme.onBackground.withOpacity(0.6);
-  // var color2 = Theme.of(context).extension<CustomColors>()!.sourceCustomcolor3;
-  Color colorNotStarted = const Color(0xFF787878);
-  Color colorInProgress = const Color(0xFFFFC268);
-  Color colorNeedAttention = const Color(0xFFE24646);
-  Color colorCompleted = const Color(0xFF46E27D);
-
-  Color statusColor;
-  IconData statusIcon;
-  String statusMessage;
-  switch (status) {
-    case 0:
-      {
-        statusColor = colorNotStarted;
-        statusIcon = FontAwesomeIcons.circle;
-        statusMessage = 'NOT STARTED YET';
-      }
-      break;
-
-    case 1:
-      {
-        statusColor = colorInProgress;
-        statusIcon = FontAwesomeIcons.circleHalfStroke;
-        statusMessage = 'IN PORGRESS';
-      }
-      break;
-    case 2:
-      {
-        statusColor = colorNeedAttention;
-        statusIcon = FontAwesomeIcons.circleExclamation;
-        statusMessage = 'NEEDS YOUR ATTENTION';
-      }
-      break;
-
-    default:
-      {
-        statusColor = colorCompleted;
-        statusIcon = FontAwesomeIcons.circleCheck;
-        statusMessage = 'TASK COMPLETED';
-      }
-      break;
-  }
-
-  return Container(
-      alignment: Alignment.center,
-      width: double.infinity,
-      height: 30,
-      decoration: BoxDecoration(
-        color: statusColor,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(12.0),
-          topRight: Radius.circular(12.0),
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          FaIcon(
-            statusIcon,
-            size: 20,
-            color: color1,
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Text(
-            statusMessage,
-          ),
-        ],
-      )
-      // widget goes here
-      );
 }

@@ -105,6 +105,7 @@ class _AddCommodityCardsState extends State<AddCommodityCards> {
   Widget build(BuildContext context) {
     return ListView(
       primary: false, // makes scrollablity false
+      // physics: ClampingScrollPhysics(),
       shrinkWrap: true,
       // scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.only(left: 15, right: 20),
