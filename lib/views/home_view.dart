@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material3_app/views/tab_1_view.dart';
 import 'package:material3_app/views/tab_2_view.dart';
+import 'package:material3_app/views/tab_3_view.dart';
 import 'package:material3_app/utils/drawer_1.dart';
 
 class HomeView extends StatefulWidget {
@@ -65,11 +66,7 @@ class _HomeViewState extends State<HomeView> {
       body: <Widget>[
         const Tab1(title: 'Flutter Demo Home Page'),
         const Tab2(title: 'Some more widgets'),
-        Container(
-          color: Colors.blue,
-          alignment: Alignment.center,
-          child: const Text('Page 3'),
-        ),
+        Tab3(),
       ][currentPageIndex],
     );
   }

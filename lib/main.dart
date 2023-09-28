@@ -99,6 +99,7 @@ void createDummyCommodityTickets(BuildContext context) {
     quantity: '100 MT',
     contactPerson: 'Prakas Kumar Mitra',
     phoneNumber: '76545 45632',
+    transportType: 'self',
     pickUpAddress: Address(
       firmName: 'Acme Corporation',
       street: 'Sy 79/6, Muppadighatta, Madhure Hobli',

@@ -11,6 +11,7 @@ class CommodityTicket {
   String quantity;
   String contactPerson;
   String phoneNumber;
+  String transportType;
 
   // Add the address fields.
   final Address pickUpAddress;
@@ -30,6 +31,7 @@ class CommodityTicket {
     required this.pickUpAddress,
     required this.destinationAddress,
     required this.pickupDate,
+    this.transportType = 'Company',
   });
 
   factory CommodityTicket.fromJson(Map<String, dynamic> json) {
@@ -47,6 +49,7 @@ class CommodityTicket {
       destinationAddress:
           Address.fromJson(json['destinationAddress'] as Map<String, dynamic>),
       pickupDate: DateTime.parse(json['pickupDate'] as String),
+      transportType: json['transportType'] as String,
     );
   }
 
@@ -62,6 +65,7 @@ class CommodityTicket {
       'pickUpAddress': pickUpAddress.toJson(),
       'destinationAddress': destinationAddress.toJson(),
       'pickupDate': pickupDate.toString(),
+      'transportType': transportType.toString(),
     };
   }
 }
