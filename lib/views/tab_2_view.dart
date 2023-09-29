@@ -7,9 +7,9 @@ import 'package:material3_app/theme/custom_color.dart';
 import '../utils/controllers/commodity_ticket_controller.dart';
 import '../utils/models/commodity_ticket_model.dart';
 import 'package:provider/provider.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../utils/widgets.dart';
+import '../utils/widgets/widgets.dart';
 
 class Tab2 extends StatefulWidget {
   final String title;
@@ -158,13 +158,13 @@ Widget commodityTicketCard(context, commodityTickets, index) {
   );
 }
 
-Widget cardWithBanner(BuildContext context, _showDetails) {
+Widget cardWithBanner(BuildContext context, showDetails) {
   // var color1 = Theme.of(context).colorScheme.onBackground.withOpacity(0.6);
 
   return GestureDetector(
     onTap: () {
-      _showDetails['card 1'] = !_showDetails['card 1'];
-      debugPrint('_showDetails[card 1] = ${_showDetails['card 1']}');
+      showDetails['card 1'] = !showDetails['card 1'];
+      debugPrint('_showDetails[card 1] = ${showDetails['card 1']}');
       // setState(() {});
     },
     child: Card(
@@ -178,16 +178,16 @@ Widget cardWithBanner(BuildContext context, _showDetails) {
         // mainAxisSize: MainAxisSize.min,
         children: [
           topBannerStatus(context, 1),
-          Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 20),
+          const Padding(
+            padding: EdgeInsets.only(top: 20, bottom: 20),
             child: Text('This would be visible all time. showDetails'),
           ),
           Visibility(
-            visible: _showDetails['card 1'],
+            visible: showDetails['card 1'],
             child: Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
-                  'This would show only if showDetails is ${_showDetails['card 1']}'),
+                  'This would show only if showDetails is ${showDetails['card 1']}'),
             ),
           ),
         ],

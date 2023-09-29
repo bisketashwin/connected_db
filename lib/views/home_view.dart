@@ -66,7 +66,7 @@ class _HomeViewState extends State<HomeView> {
       body: <Widget>[
         const Tab1(title: 'Flutter Demo Home Page'),
         const Tab2(title: 'Some more widgets'),
-        Tab3(),
+        const Tab3(),
       ][currentPageIndex],
     );
   }

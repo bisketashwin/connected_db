@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // import 'home_sreen.dart';
 // import '../utils/drawer_1.dart';
 import '../utils/widgets.dart';
+import '../utils/widgets/widgets.dart';
 
 class Tab1 extends StatefulWidget {
   const Tab1({super.key, required this.title});
@@ -30,7 +31,7 @@ class _MyHomePageState extends State<Tab1> {
         children: const [
           /////// welcome message
           WelcomeMessage(),
-          AddCommodityCards2(),
+          CreateCommodityCards2(),
 
           ///Commodity Cards the drag effect still there on scroll of cards need to fix it later
           /// cards
@@ -93,14 +94,14 @@ class _WelcomeMessageState extends State<WelcomeMessage> {
   }
 }
 
-class AddCommodityCards extends StatefulWidget {
-  const AddCommodityCards({Key? key}) : super(key: key);
+class CreateCommodityCards extends StatefulWidget {
+  const CreateCommodityCards({Key? key}) : super(key: key);
 
   @override
-  _AddCommodityCardsState createState() => _AddCommodityCardsState();
+  _CreateCommodityCardsState createState() => _CreateCommodityCardsState();
 }
 
-class _AddCommodityCardsState extends State<AddCommodityCards> {
+class _CreateCommodityCardsState extends State<CreateCommodityCards> {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -110,13 +111,13 @@ class _AddCommodityCardsState extends State<AddCommodityCards> {
       // scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.only(left: 15, right: 20),
       children: const [
-        AddCommodityCard1(
+        CommodityCard1(
             icon: Icons.calculate,
             width: 300,
             header: '20 MT Spanish Cotton',
             bodyText:
                 'Moaterial is in transit will reach the ware house on 19th Sep'),
-        AddCommodityCard1(
+        CommodityCard1(
             icon: Icons.calculate,
             width: 300,
             header: '20 MT Spanish Cotton',
@@ -127,36 +128,35 @@ class _AddCommodityCardsState extends State<AddCommodityCards> {
   }
 }
 
-class AddCommodityCards2 extends StatefulWidget {
-  const AddCommodityCards2({Key? key}) : super(key: key);
+class CreateCommodityCards2 extends StatefulWidget {
+  const CreateCommodityCards2({Key? key}) : super(key: key);
 
   @override
-  _AddCommodityCards2State createState() => _AddCommodityCards2State();
+  _CreateCommodityCards2State createState() => _CreateCommodityCards2State();
 }
 
-class _AddCommodityCards2State extends State<AddCommodityCards2> {
+class _CreateCommodityCards2State extends State<CreateCommodityCards2> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 500.0,
-      child: ListView(
-        // scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.only(left: 15, right: 20),
-        children: const [
-          AddCommodityCard2(
-              inOut: 'out',
-              // width: 300,
-              header: '20 MT Spanish Cotton',
-              bodyText:
-                  'Moaterial is in transit will reach the ware house on 19th Sep'),
-          AddCommodityCard2(
-              inOut: 'in',
-              // width: 300,
-              header: '20 MT Spanish Cotton',
-              bodyText:
-                  'Moaterial is in transit will reach the ware house on 19th Sep'),
-        ],
-      ),
+    return ListView(
+      primary: false,
+      shrinkWrap: true,
+      // scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.only(left: 15, right: 20),
+      children: const [
+        CommodityCard2(
+            inOut: 'out',
+            // width: 300,
+            header: '20 MT Spanish Cotton',
+            bodyText:
+                'Moaterial is in transit will reach the ware house on 19th Sep'),
+        CommodityCard2(
+            inOut: 'in',
+            // width: 300,
+            header: '20 MT Spanish Cotton',
+            bodyText:
+                'Moaterial is in transit will reach the ware house on 19th Sep'),
+      ],
     );
   }
 }

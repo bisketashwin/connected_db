@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../theme/custom_color.dart';
 
 class Tab3 extends StatefulWidget {
+  const Tab3({super.key});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -139,7 +141,7 @@ class _MyAppState extends State<Tab3> {
       backgroundColor:
           Theme.of(context).extension<CustomColors>()!.sourceCustomcolor2,
       body: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: parentListView(),
       ),
     );
