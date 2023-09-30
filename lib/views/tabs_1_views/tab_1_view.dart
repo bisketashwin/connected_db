@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'home_sreen.dart';
-// import '../utils/drawer_1.dart';
-import '../utils/widgets.dart';
-import '../utils/widgets/widgets.dart';
+import 'package:material3_app/utils/widgets/widgets.dart';
 
 class Tab1 extends StatefulWidget {
   const Tab1({super.key, required this.title});
