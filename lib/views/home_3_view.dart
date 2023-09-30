@@ -25,7 +25,7 @@ class _HomeView3State extends State<HomeView3> {
               child: Text("Fav"),
             ),
           ),
-          HomeScreen(
+          Tab2(
             hideNavigation: hideNav,
             showNavigation: showNav,
           ),
@@ -83,76 +83,5 @@ class _HomeView3State extends State<HomeView3> {
     setState(() {
       visible = true;
     });
-  }
-}
-
-class HomeScreen extends StatefulWidget {
-  final VoidCallback showNavigation;
-  final VoidCallback hideNavigation;
-
-  const HomeScreen(
-      {Key? key, required this.showNavigation, required this.hideNavigation})
-      : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  ScrollController scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-
-    scrollController.addListener(() {
-      if (scrollController.position.userScrollDirection ==
-          ScrollDirection.forward) {
-        widget.showNavigation();
-      } else {
-        widget.hideNavigation();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-
-    scrollController.removeListener(() {
-      if (scrollController.position.userScrollDirection ==
-          ScrollDirection.forward) {
-        widget.showNavigation();
-      } else {
-        widget.hideNavigation();
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: ListView(
-        controller: scrollController,
-        children: [
-          Container(
-            color: Colors.red,
-            height: 270,
-          ),
-          Container(
-            color: Colors.blue,
-            height: 200,
-          ),
-          Container(
-            color: Colors.purple,
-            height: 200,
-          ),
-          Container(
-            color: Colors.green,
-            height: 280,
-          ),
-        ],
-      ),
-    );
   }
 }

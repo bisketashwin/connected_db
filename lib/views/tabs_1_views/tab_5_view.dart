@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../../theme/custom_color.dart';
 import '../../utils/widgets/widgets.dart';
 
 class Tab5 extends StatefulWidget {
@@ -51,56 +52,49 @@ class _Tab5State extends State<Tab5> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor:
+            Theme.of(context).extension<CustomColors>()!.sourceCustomcolor2,
         drawer: const MyDrawer1(),
         body: NestedScrollView(
           controller: scrollController,
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBocIsScrolled) => [
             SliverAppBar(
-              // backgroundColor: Colors.amber,
-              expandedHeight: 10,
-              elevation: 0,
-              floating: true,
-              snap: true,
-              // pinned: true,
-              // shadowColor: Colors.transparent,
-              // backgroundColor: Colors.transparent,
-              // scrolledUnderElevation: 0,
-              leading: Builder(
-                builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(Icons.person_2),
-                    padding: const EdgeInsets.only(left: 10),
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                  );
-                },
-              ),
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: IconButton(
-                    icon: const Icon(Icons.settings),
-                    onPressed: () {
-                      // Add your settings button functionality here
-                    },
-                  ),
+                // backgroundColor: Colors.amber,
+                expandedHeight: 10,
+                elevation: 0,
+                floating: true,
+                snap: true,
+                // pinned: true,
+                shadowColor: Colors.transparent,
+                backgroundColor: Colors.transparent,
+                scrolledUnderElevation: 0,
+                leading: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: const Icon(Icons.person_2),
+                      padding: const EdgeInsets.only(left: 10),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                    );
+                  },
                 ),
-              ],
-              title: TabBar(
-                indicatorColor: Color(0xFF0720FF),
-                indicatorWeight: 5,
-                tabs: [
-                  Tab(text: 'Tab 1'),
-                  Tab(text: 'Tab 2'),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: IconButton(
+                      icon: const Icon(Icons.call),
+                      onPressed: () {
+                        // Add your settings button functionality here
+                      },
+                    ),
+                  ),
                 ],
-              ),
-            ),
+                title: Center(child: myTabBar2(context: context))),
           ],
           body: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: const TabBarView(
               children: <Widget>[
                 DummyLongList(),
