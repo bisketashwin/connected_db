@@ -8,7 +8,7 @@ ThemeData myLightTheme = ThemeData(
   colorScheme: lightColorScheme,
   textTheme: textTheme,
 
-  /// following https://oflutter.com/flutter-material-3-how-to-use-custom-colors/
+  ///CUSTOM COLOURS following https://oflutter.com/flutter-material-3-how-to-use-custom-colors/
   extensions: [lightCustomColors],
 );
 ThemeData myDarkTheme = ThemeData(
@@ -16,7 +16,7 @@ ThemeData myDarkTheme = ThemeData(
   colorScheme: darkColorScheme,
   textTheme: textTheme,
 
-  /// following https://oflutter.com/flutter-material-3-how-to-use-custom-colors/
+  ///CUSTOM COLOURS following https://oflutter.com/flutter-material-3-how-to-use-custom-colors/
   extensions: [darkCustomColors],
 );
 const lightColorScheme = ColorScheme(

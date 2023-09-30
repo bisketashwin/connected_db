@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:material3_app/views/tab_1_view.dart';
-import 'package:material3_app/views/tab_2_view.dart';
-import 'package:material3_app/views/tab_3_view.dart';
 import 'package:material3_app/utils/widgets/drawer_1.dart';
+import 'tabs_1_views/tabs_1_views.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -20,23 +18,23 @@ class _HomeViewState extends State<HomeView> {
       drawerEnableOpenDragGesture: true,
       extendBodyBehindAppBar: true,
       drawer: const MyDrawer1(),
-      appBar: AppBar(
-        elevation: 0,
-        shadowColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
-        scrolledUnderElevation: 0,
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.person_2),
-              padding: const EdgeInsets.only(left: 10),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
-      ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   shadowColor: Colors.transparent,
+      //   backgroundColor: Colors.transparent,
+      //   scrolledUnderElevation: 0,
+      //   leading: Builder(
+      //     builder: (BuildContext context) {
+      //       return IconButton(
+      //         icon: const Icon(Icons.person_2),
+      //         padding: const EdgeInsets.only(left: 10),
+      //         onPressed: () {
+      //           Scaffold.of(context).openDrawer();
+      //         },
+      //       );
+      //     },
+      //   ),
+      // ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
@@ -65,8 +63,8 @@ class _HomeViewState extends State<HomeView> {
       ),
       body: <Widget>[
         const Tab1(title: 'Flutter Demo Home Page'),
-        const Tab2(title: 'Some more widgets'),
-        const Tab3(),
+        // Tab2(),
+        Tab4(),
       ][currentPageIndex],
     );
   }
