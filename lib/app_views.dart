@@ -27,7 +27,7 @@ class AppScreens {
     // GetPage(name: Routes.SIGNUP, page: () => SignUpView()),
     GetPage(
       name: Routes.HOME,
-      page: () => HomeView2(),
+      page: () => HomeView3(),
     ),
     // GetPage(name: Routes.SETTINGS, page: () => const Settings()),
     // GetPage(name: Routes.PROFILE_EDIT, page: () => const ProfileEdit()),

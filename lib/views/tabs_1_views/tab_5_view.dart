@@ -54,6 +54,7 @@ class _Tab5State extends State<Tab5> {
         backgroundColor: Colors.blueAccent,
         drawer: const MyDrawer1(),
         body: NestedScrollView(
+          controller: scrollController,
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBocIsScrolled) => [
             SliverAppBar(

@@ -5,44 +5,24 @@ import 'package:material3_app/utils/widgets/widgets.dart';
 
 import 'tabs_1_views/tabs_1_views.dart';
 
-class HomeView2 extends StatefulWidget {
-  const HomeView2({Key? key}) : super(key: key);
+class HomeViewOld extends StatefulWidget {
+  const HomeViewOld({Key? key}) : super(key: key);
 
   @override
-  State<HomeView2> createState() => _HomeView2State();
+  State<HomeViewOld> createState() => _HomeViewOldState();
 }
 
-class _HomeView2State extends State<HomeView2> {
+class _HomeViewOldState extends State<HomeViewOld> {
   bool visible = true;
   int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawerEnableOpenDragGesture: true,
-      extendBodyBehindAppBar: true,
-      drawer: const MyDrawer1(),
-      appBar: AppBar(
-        elevation: 0,
-        shadowColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
-        scrolledUnderElevation: 0,
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.person_2),
-              padding: const EdgeInsets.only(left: 10),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
-      ),
       body: IndexedStack(
         index: currentIndex,
         children: [
-          Container(child: Tab1(title: 'title')),
+          Tab1(title: 'title'),
           Tab5(
             hideNavigation: hideNav,
             showNavigation: showNav,
@@ -67,7 +47,7 @@ class _HomeView2State extends State<HomeView2> {
               },
               items: [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.favorite), label: "Favorite"),
+                    icon: Icon(Icons.favorite), label: "Fav"),
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.person), label: "Profile"),
