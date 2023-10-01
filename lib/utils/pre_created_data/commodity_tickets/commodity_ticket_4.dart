@@ -6,6 +6,7 @@ CommodityTicket commodityTicket4() {
       firmName: 'Organic Harvest',
       proprietorName: 'Priya Singh',
     ),
+    goodMovement: 'Inward',
     commodity: 'Tomatoes',
     quantity: '60 MT',
     contactPerson: 'Arun Kumar',

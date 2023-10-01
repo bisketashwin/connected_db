@@ -4,10 +4,13 @@ CommodityTicket commodityTicket1() {
   return CommodityTicket(
     commodityOwner: CommodityOwner(
         firmName: 'MSR Fruits Farm', proprietorName: 'Ujjanagowda Patil'),
+    goodMovement: 'Inward',
     commodity: 'Grapes',
     quantity: '120 MT',
     contactPerson: 'Ramesh Patil',
+
     phoneNumber: '9632115645',
+
     pickUpAddress: Address(
       firmName: 'MSR Fruits Farm',
       street: 'Chikka Kukkanahalli, Guddarahalli, hearaghatta',

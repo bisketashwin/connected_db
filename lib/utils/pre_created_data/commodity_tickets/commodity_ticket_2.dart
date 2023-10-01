@@ -6,6 +6,7 @@ CommodityTicket commodityTicket2() {
       firmName: 'Acme Corporation',
       proprietorName: 'Rajesh Fegal',
     ),
+    goodMovement: 'Inward',
     commodity: 'Wheat',
     quantity: '100 MT',
     contactPerson: 'Prakas Kumar Mitra',

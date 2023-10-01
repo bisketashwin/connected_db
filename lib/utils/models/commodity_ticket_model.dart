@@ -6,14 +6,15 @@ import 'commodity_owner_model.dart';
 class CommodityTicket {
   String id;
   String ticketNumber;
-  final CommodityOwner commodityOwner;
   String commodity;
   String quantity;
   String contactPerson;
   String phoneNumber;
   String transportType;
+  String goodMovement;
 
-  // Add the address fields.
+  // these are sub models so have final prefix
+  final CommodityOwner commodityOwner;
   final Address pickUpAddress;
   final Address destinationAddress;
 
@@ -32,6 +33,7 @@ class CommodityTicket {
     required this.destinationAddress,
     required this.pickupDate,
     this.transportType = 'Company',
+    required this.goodMovement,
   });
 
   factory CommodityTicket.fromJson(Map<String, dynamic> json) {
@@ -50,6 +52,7 @@ class CommodityTicket {
           Address.fromJson(json['destinationAddress'] as Map<String, dynamic>),
       pickupDate: DateTime.parse(json['pickupDate'] as String),
       transportType: json['transportType'] as String,
+      goodMovement: json['goodMovement'] as String,
     );
   }
 
@@ -66,6 +69,7 @@ class CommodityTicket {
       'destinationAddress': destinationAddress.toJson(),
       'pickupDate': pickupDate.toString(),
       'transportType': transportType.toString(),
+      'goodMovement': goodMovement.toString(),
     };
   }
 }

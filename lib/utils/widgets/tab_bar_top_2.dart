@@ -36,9 +36,14 @@ Widget myTabBar2({required context}) {
               // color: Color.fromARGB(147, 255, 255, 255),
               border: Border.all(color: color2.withAlpha(20), width: 1),
             ),
-            child: Align(
-              alignment: Alignment.center,
-              child: Text("APPS"),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.arrow_downward_rounded),
+                Text(
+                  'INWARD',
+                )
+              ],
             ),
           ),
         ),
@@ -48,9 +53,14 @@ Widget myTabBar2({required context}) {
               borderRadius: BorderRadius.circular(50),
               border: Border.all(color: color2.withAlpha(20), width: 1),
             ),
-            child: Align(
-              alignment: Alignment.center,
-              child: Text("MOVIES"),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.arrow_upward_rounded),
+                Text(
+                  'OUTWARD',
+                )
+              ],
             ),
           ),
         ),

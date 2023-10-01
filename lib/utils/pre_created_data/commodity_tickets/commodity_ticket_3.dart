@@ -6,6 +6,7 @@ CommodityTicket commodityTicket3() {
       firmName: 'Green Farms',
       proprietorName: 'Suresh Reddy',
     ),
+    goodMovement: 'Inward',
     commodity: 'Rice',
     quantity: '80 MT',
     contactPerson: 'Anita Sharma',

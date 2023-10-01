@@ -20,11 +20,7 @@ class _HomeView3State extends State<HomeView3> {
       body: IndexedStack(
         index: currentIndex,
         children: [
-          Container(
-            child: Center(
-              child: Text("Fav"),
-            ),
-          ),
+          Tab1(title: 'move goods'),
           Tab2(
             hideNavigation: hideNav,
             showNavigation: showNav,
@@ -53,7 +49,7 @@ class _HomeView3State extends State<HomeView3> {
                 NavigationDestination(
                   selectedIcon: Icon(Icons.home),
                   icon: Icon(Icons.home_outlined),
-                  label: 'Home',
+                  label: 'Move Goods',
                 ),
                 NavigationDestination(
                   selectedIcon: Icon(Icons.business),
