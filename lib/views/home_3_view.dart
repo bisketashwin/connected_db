@@ -20,7 +20,11 @@ class _HomeView3State extends State<HomeView3> {
       body: IndexedStack(
         index: currentIndex,
         children: [
-          Tab1(title: 'move goods'),
+          // Tab3(),
+          Tab6(
+            hideNavigation: hideNav,
+            showNavigation: showNav,
+          ),
           Tab2(
             hideNavigation: hideNav,
             showNavigation: showNav,

@@ -9,7 +9,9 @@ enum CommodityTicketStatus {
   inProgress,
   needsAttention,
   halted,
-  completed
+  completed,
+  inward,
+  outward,
 }
 
 extension CommodityTicketStatusColor on CommodityTicketStatus {
@@ -25,6 +27,10 @@ extension CommodityTicketStatusColor on CommodityTicketStatus {
         return const Color(0xFF787878);
       case CommodityTicketStatus.completed:
         return const Color(0xFF46E27D);
+      case CommodityTicketStatus.inward:
+        return const Color(0xFF7CBAE7);
+      case CommodityTicketStatus.outward:
+        return const Color(0xFFCE91E1);
       default:
         throw Exception('Unknown CommodityTicketStatus value: $this');
     }

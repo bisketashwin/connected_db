@@ -12,7 +12,7 @@ Widget myTabBar2({required context}) {
   return Container(
     height: 30,
     child: TabBar(
-      labelStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+      labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
             fontWeight: FontWeight.w600,
             // color: color,
           ),
@@ -21,12 +21,16 @@ Widget myTabBar2({required context}) {
       // indicatorSize: TabBarIndicatorSize.label,
       // isScrollable: true,
       // indicatorPadding: EdgeInsets.zero,
-      labelPadding: EdgeInsets.only(right: 5.0, left: 5.0),
+      labelPadding: EdgeInsets.only(
+        right: 5.0,
+        left: 5.0,
+      ),
       // indicatorWeight: 4,
       dividerColor: Colors.transparent,
       // padding: EdgeInsets.zero,
       indicator: BoxDecoration(
           borderRadius: BorderRadius.circular(50), color: Colors.white),
+
       // enableFeedback: false,
       tabs: [
         Tab(

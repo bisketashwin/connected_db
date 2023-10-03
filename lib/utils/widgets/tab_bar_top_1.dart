@@ -13,7 +13,7 @@ Widget myTabBar1({required context}) {
     indicatorSize: TabBarIndicatorSize.label,
     isScrollable: true,
     indicatorPadding: EdgeInsets.zero,
-    labelPadding: EdgeInsets.only(right: 5.0, left: 5.0),
+    labelPadding: EdgeInsets.only(right: 10.0, left: 10.0),
     indicatorWeight: 4,
     dividerColor: Colors.transparent,
     padding: EdgeInsets.zero,
