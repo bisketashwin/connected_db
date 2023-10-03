@@ -9,3 +9,4 @@ export 'card_with_banner.dart';
 export 'tab_bar_top_2.dart';
 export 'tab_bar_top_1.dart';
 export 'dummy_long_List.dart';
+export 'commodity_thumbs.dart';
