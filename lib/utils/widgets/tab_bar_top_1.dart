@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import '../../theme/custom_color.dart';
 
 Widget myTabBar1({required context}) {
+  var color1 = Theme.of(context).colorScheme.secondary;
   return TabBar(
+    indicatorColor: color1,
+    labelColor: color1,
     labelStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
           fontWeight: FontWeight.w600,
-          // color: color,
         ),
     unselectedLabelColor:
         Theme.of(context).colorScheme.onPrimaryContainer.withAlpha(115),

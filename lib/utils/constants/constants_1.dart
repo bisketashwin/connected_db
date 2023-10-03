@@ -30,7 +30,7 @@ extension CommodityTicketStatusColor on CommodityTicketStatus {
       case CommodityTicketStatus.inward:
         return const Color(0xFF7CBAE7);
       case CommodityTicketStatus.outward:
-        return const Color(0xFFCE91E1);
+        return Color.fromARGB(255, 221, 175, 235);
       default:
         throw Exception('Unknown CommodityTicketStatus value: $this');
     }

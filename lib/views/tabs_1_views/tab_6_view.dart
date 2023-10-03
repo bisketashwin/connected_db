@@ -77,7 +77,13 @@ class _Tab6State extends State<Tab6> {
                 leading: Builder(
                   builder: (BuildContext context) {
                     return IconButton(
-                      icon: const Icon(Icons.person_2),
+                      icon: Icon(
+                        Icons.person_2,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onPrimaryContainer
+                            .withAlpha(115),
+                      ),
                       padding: const EdgeInsets.only(left: 10),
                       onPressed: () {
                         Scaffold.of(context).openDrawer();
@@ -89,7 +95,13 @@ class _Tab6State extends State<Tab6> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: IconButton(
-                      icon: const Icon(Icons.call),
+                      icon: Icon(
+                        Icons.call,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onPrimaryContainer
+                            .withAlpha(115),
+                      ),
                       onPressed: () {
                         // Add your settings button functionality here
                       },

@@ -89,10 +89,35 @@ class _MyAppState extends State<SubSiew2> {
     // var myList;
     var commodityTicket = commodityTickets[index];
     var color1 = CommodityTicketStatus.outward.color;
-    return Column(
-      children: [
-        Card(
-          child: Column(
+    return Card(
+      child: Row(
+        children: [
+          Column(
+            children: [
+              RotatedBox(
+                quarterTurns: 3,
+                child: Container(
+                  alignment: Alignment.center,
+                  // height: double.infinity,
+                  width: (myList[index] != true) ? 90 : 132,
+                  // height: 15,
+                  // width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: color1,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(12.0),
+                      topRight: Radius.circular(12.0),
+                    ),
+                  ),
+                  child: Text(
+                    'OUTWARD',
+                    style: TextStyle(fontSize: 10),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Column(
             children: [
               InkWell(
                 onTap: () {
@@ -114,31 +139,6 @@ class _MyAppState extends State<SubSiew2> {
                 },
                 child: Row(
                   children: [
-                    Column(
-                      children: [
-                        RotatedBox(
-                          quarterTurns: 3,
-                          child: Container(
-                            alignment: Alignment.center,
-                            // height: double.infinity,
-                            width: 90,
-                            height: 15,
-                            // width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: color1,
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(12.0),
-                                topRight: Radius.circular(12.0),
-                              ),
-                            ),
-                            child: Text(
-                              'OUTWARD',
-                              style: TextStyle(fontSize: 10),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -161,7 +161,7 @@ class _MyAppState extends State<SubSiew2> {
                                 '${commodityTicket.commodity}  ${commodityTicket.quantity}',
                                 style: Theme.of(context).textTheme.titleMedium,
                               ),
-                              Container(
+                              SizedBox(
                                 width: 250,
                                 child: Text(
                                   'Attention you need to aprove tranporation quation get intouch with manger',
@@ -177,12 +177,14 @@ class _MyAppState extends State<SubSiew2> {
                   ],
                 ),
               ),
-              actionChips2(myList, index, context),
+              Visibility(
+                visible: myList[index],
+                child: actionChips2(context),
+              ),
             ],
           ),
-        ),
-        // actionChips(myList, index, context),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -215,104 +217,103 @@ String findKeyword(String string, Iterable<String> keywords) {
   return 'default';
 }
 
-Widget actionChips(myList, index, context) {
+Widget actionChips(context) {
   var color1 = CommodityTicketStatus.outward.color;
 
-  return Visibility(
-    visible: myList[index],
-    child: Padding(
-      padding: const EdgeInsets.only(left: 20, bottom: 10),
-      child: Row(
-        children: [
-          ActionChip.elevated(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            avatar: Icon(
-              Icons.call,
-              color: color1,
-            ),
-            label: Text(
-              'Call Manager',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            onPressed: () {},
+  return Padding(
+    padding: const EdgeInsets.only(left: 10, bottom: 10),
+    child: Row(
+      children: [
+        ActionChip.elevated(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-          TextButton.icon(
-            onPressed: () {
-              // Perform some action
-            },
-            icon: Icon(Icons.home, color: color1),
-            label: Text(
-              'Home',
-              style: Theme.of(context).textTheme.bodySmall,
+          avatar: Icon(
+            Icons.call,
+            color: color1,
+          ),
+          label: Text(
+            'Call Manager',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          onPressed: () {},
+        ),
+        TextButton.icon(
+          onPressed: () {
+            // Perform some action
+          },
+          icon: Icon(Icons.home, color: color1),
+          label: Text(
+            'Home',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ),
+        ActionChip(
+          avatar: Icon(
+            Icons.call,
+            color: color1,
+          ),
+          label: Text(
+            'Details',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          backgroundColor: Color.fromARGB(43, 227, 120, 242),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: Colors.transparent,
             ),
           ),
-          ActionChip(
-            avatar: Icon(
-              Icons.call,
-              color: color1,
-            ),
-            label: Text(
-              'Details',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            backgroundColor: Color.fromARGB(43, 227, 120, 242),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-              side: BorderSide(
-                color: Colors.transparent,
-              ),
-            ),
-            onPressed: () {
-              // Perform some action
-            },
-          ),
-        ],
-      ),
+          onPressed: () {
+            // Perform some action
+          },
+        ),
+      ],
     ),
   );
 }
 
-Widget actionChips2(myList, index, context) {
-  var color1 = CommodityTicketStatus.outward.color;
+Widget actionChips2(context) {
+  // var color1 = CommodityTicketStatus.outward.color;
+  var color1 = Theme.of(context).colorScheme.secondary;
+  var textStyle1 = Theme.of(context)
+      .textTheme
+      .bodySmall!
+      .copyWith(color: color1, fontWeight: FontWeight.w700);
 
-  return Visibility(
-    visible: myList[index],
-    child: Padding(
-      padding: const EdgeInsets.only(left: 20, bottom: 0),
-      child: Row(
-        children: [
-          TextButton.icon(
-            onPressed: () {
-              // Perform some action
-            },
-            icon: Icon(
-              Icons.call,
-              color: color1,
-              size: 20,
-            ),
-            label: Text(
-              'CALL MANAGER',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
+  return Padding(
+    padding: const EdgeInsets.only(left: 10, bottom: 0),
+    child: Row(
+      children: [
+        TextButton.icon(
+          onPressed: () {
+            // Perform some action
+          },
+          icon: Icon(
+            Icons.call,
+            color: color1,
+            size: 20,
           ),
-          TextButton.icon(
-            onPressed: () {
-              // Perform some action
-            },
-            icon: Icon(
-              Icons.list,
-              color: color1,
-              size: 20,
-            ),
-            label: Text(
-              'OTHER ACTIONS',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
+          label: Text(
+            'CALL MANAGER',
+            style: textStyle1,
           ),
-        ],
-      ),
+        ),
+        TextButton.icon(
+          onPressed: () {
+            // Perform some action
+          },
+          icon: Icon(
+            Icons.list,
+            color: color1,
+            size: 20,
+          ),
+          label: Text(
+            'OTHER ACTIONS',
+            style: textStyle1,
+          ),
+        ),
+      ],
     ),
   );
 }
