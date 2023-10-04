@@ -38,15 +38,21 @@ class _MyAppState extends State<SubSiew2> {
 
   // Create a parent list view to contain the two list views.
   Widget parentListView(context) {
+    var color2 =
+        Theme.of(context).colorScheme.onPrimaryContainer.withAlpha(145);
+    var color1 = Theme.of(context).colorScheme.secondary;
     return ListView(
       shrinkWrap: true,
       children: [
-        Text(
-          'Items need your attention',
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                fontWeight: FontWeight.w600,
-                // color: color,
-              ),
+        Padding(
+          padding: const EdgeInsets.only(left: 3.0),
+          child: Text(
+            'Items need your attention',
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: color2,
+                ),
+          ),
         ),
         SizedBox(
           height: 10,
@@ -164,7 +170,7 @@ class _MyAppState extends State<SubSiew2> {
                               SizedBox(
                                 width: 250,
                                 child: Text(
-                                  'Attention you need to aprove tranporation quation get intouch with manger',
+                                  '⚠ Attention you need to aprove tranporation quation get intouch with manger',
                                   style: TextStyle(fontSize: 12),
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -204,7 +210,6 @@ Widget getGcommodityThumb({required String name}) {
       width: 50,
     ),
   );
-  ;
 }
 
 String findKeyword(String string, Iterable<String> keywords) {
@@ -217,69 +222,14 @@ String findKeyword(String string, Iterable<String> keywords) {
   return 'default';
 }
 
-Widget actionChips(context) {
-  var color1 = CommodityTicketStatus.outward.color;
-
-  return Padding(
-    padding: const EdgeInsets.only(left: 10, bottom: 10),
-    child: Row(
-      children: [
-        ActionChip.elevated(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          avatar: Icon(
-            Icons.call,
-            color: color1,
-          ),
-          label: Text(
-            'Call Manager',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-          onPressed: () {},
-        ),
-        TextButton.icon(
-          onPressed: () {
-            // Perform some action
-          },
-          icon: Icon(Icons.home, color: color1),
-          label: Text(
-            'Home',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-        ),
-        ActionChip(
-          avatar: Icon(
-            Icons.call,
-            color: color1,
-          ),
-          label: Text(
-            'Details',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-          backgroundColor: Color.fromARGB(43, 227, 120, 242),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: BorderSide(
-              color: Colors.transparent,
-            ),
-          ),
-          onPressed: () {
-            // Perform some action
-          },
-        ),
-      ],
-    ),
-  );
-}
-
 Widget actionChips2(context) {
   // var color1 = CommodityTicketStatus.outward.color;
+  var color2 = Theme.of(context).colorScheme.onPrimaryContainer.withAlpha(145);
   var color1 = Theme.of(context).colorScheme.secondary;
   var textStyle1 = Theme.of(context)
       .textTheme
       .bodySmall!
-      .copyWith(color: color1, fontWeight: FontWeight.w700);
+      .copyWith(color: color2, fontWeight: FontWeight.w700);
 
   return Padding(
     padding: const EdgeInsets.only(left: 10, bottom: 0),
@@ -291,7 +241,7 @@ Widget actionChips2(context) {
           },
           icon: Icon(
             Icons.call,
-            color: color1,
+            color: color2,
             size: 20,
           ),
           label: Text(
@@ -305,7 +255,7 @@ Widget actionChips2(context) {
           },
           icon: Icon(
             Icons.list,
-            color: color1,
+            color: color2,
             size: 20,
           ),
           label: Text(
