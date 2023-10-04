@@ -58,10 +58,10 @@ void main() async {
       providers: [
         ChangeNotifierProvider<CommodityTicketController>(
             create: (_) => CommodityTicketController()),
-        ChangeNotifierProvider<AddressController>(
-            create: (_) => AddressController()),
-        ChangeNotifierProvider<CommodityOwnerController>(
-            create: (_) => CommodityOwnerController()),
+        // ChangeNotifierProvider<AddressController>(
+        //     create: (_) => AddressController()),
+        // ChangeNotifierProvider<CommodityOwnerController>(
+        //     create: (_) => CommodityOwnerController()),
       ],
       child: const MyApp(),
     ),
