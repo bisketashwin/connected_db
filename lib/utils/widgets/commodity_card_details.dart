@@ -1,14 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:material3_app/utils/controllers/controllers.dart';
+import 'package:material3_app/utils/models/address_model.dart';
+import 'package:material3_app/utils/models/commodity_owner_model.dart';
 import 'package:material3_app/utils/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 Widget commodityCardDetails(context, commodityTickets, index) {
-  bool showDetails = false;
+  /////////////////
+  List<Address> farmAddresses =
+      Provider.of<FarmAddressController>(context).addresses;
+  List<Address> warehouseAddresses =
+      Provider.of<WarehouseAddressController>(context).addresses;
+  List<CommodityOwner> commodityOwners =
+      Provider.of<CommodityOwnerController>(context).commodityOwners;
+
   var commodityTicket = commodityTickets[index];
-  var pickAd = commodityTicket.pickUpAddress;
-  var destAd = commodityTicket.destinationAddress;
+
+  var ownerId = commodityTicket.commodityOwnerId;
+  var pickupId = commodityTicket.pickUpAddressId;
+  var destId = commodityTicket.destinationAddressId;
+
+  bool showDetails = false;
+  CommodityOwner comOwner = commodityOwners
+      .firstWhere((commodityOwner) => commodityOwner.id == ownerId);
+  Address pickAd =
+      farmAddresses.firstWhere((address) => address.id == pickupId);
+  Address destAd =
+      warehouseAddresses.firstWhere((address) => address.id == destId);
+
+  ///////////
   var color1 = Theme.of(context).colorScheme.onBackground.withOpacity(0.6);
   var defaultTextStyle = Theme.of(context).textTheme.bodySmall;
+
   return Center(
     child: GestureDetector(
       onDoubleTap: () {
@@ -29,6 +53,7 @@ Widget commodityCardDetails(context, commodityTickets, index) {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text('Nothing to Show! ${farmAddresses.length}'),
                         iconLabel(
                           label: 'Ticket Number',
                           context: context,
@@ -40,7 +65,7 @@ Widget commodityCardDetails(context, commodityTickets, index) {
                           '${commodityTicket.commodity}  ${commodityTicket.quantity}',
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
-                        Text(commodityTicket.commodityOwner.firmName,
+                        Text(comOwner.firmName,
                             style: Theme.of(context).textTheme.bodyLarge),
                         Visibility(
                           visible: showDetails,

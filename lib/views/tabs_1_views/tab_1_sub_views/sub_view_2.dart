@@ -170,7 +170,7 @@ class _MyAppState extends State<SubSiew2> {
                               SizedBox(
                                 width: 250,
                                 child: Text(
-                                  '⚠ Attention you need to aprove tranporation quation get intouch with manger',
+                                  '⚠ Attention aprove tranporation quation get intouch with manger',
                                   style: TextStyle(fontSize: 12),
                                   overflow: TextOverflow.ellipsis,
                                 ),

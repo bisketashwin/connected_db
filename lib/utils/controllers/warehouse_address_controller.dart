@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 // import 'package:provider/provider.dart';
 import '../models/address_model.dart';
 
-class AddressController extends ChangeNotifier {
+class WarehouseAddressController extends ChangeNotifier {
   final List<Address> _addresses = [];
 
   List<Address> get addresses => _addresses;

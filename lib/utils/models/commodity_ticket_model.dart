@@ -1,75 +1,41 @@
 // commodity_ticket_model.dart
 
-import 'address_model.dart';
-import 'commodity_owner_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'commodity_ticket_model.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class CommodityTicket {
   String id;
+  String commodityOwnerId;
+  String pickUpAddressId;
+  String destinationAddressId;
   String ticketNumber;
+  String goodMovement;
   String commodity;
   String quantity;
   String contactPerson;
   String phoneNumber;
   String transportType;
-  String goodMovement;
-
-  // these are sub models so have final prefix
-  final CommodityOwner commodityOwner;
-  final Address pickUpAddress;
-  final Address destinationAddress;
-
-  // Add the pickupDate field.
-  final DateTime pickupDate;
+  DateTime pickupDate;
 
   CommodityTicket({
-    this.id = '',
+    required this.id,
+    this.commodityOwnerId = 'Not Generated',
+    this.pickUpAddressId = 'Not Generated',
+    this.destinationAddressId = 'Not Generated',
     this.ticketNumber = 'Not Generated',
-    required this.commodityOwner,
+    required this.goodMovement,
     required this.commodity,
     required this.quantity,
     required this.contactPerson,
     required this.phoneNumber,
-    required this.pickUpAddress,
-    required this.destinationAddress,
-    required this.pickupDate,
     this.transportType = 'Company',
-    required this.goodMovement,
+    required this.pickupDate,
   });
 
-  factory CommodityTicket.fromJson(Map<String, dynamic> json) {
-    return CommodityTicket(
-      id: json['id'] as String,
-      ticketNumber: json['ticketNumber'] as String,
-      commodityOwner: CommodityOwner.fromJson(
-          json['commodityOwner'] as Map<String, dynamic>),
-      commodity: json['commodity'] as String,
-      quantity: json['quantity'] as String,
-      contactPerson: json['contactPerson'] as String,
-      phoneNumber: json['phoneNumber'] as String,
-      pickUpAddress:
-          Address.fromJson(json['pickUpAddress'] as Map<String, dynamic>),
-      destinationAddress:
-          Address.fromJson(json['destinationAddress'] as Map<String, dynamic>),
-      pickupDate: DateTime.parse(json['pickupDate'] as String),
-      transportType: json['transportType'] as String,
-      goodMovement: json['goodMovement'] as String,
-    );
-  }
+  factory CommodityTicket.fromJson(Map<String, dynamic> json) =>
+      _$CommodityTicketFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'ticketNumber': ticketNumber,
-      'commodityOwner': commodityOwner.toJson(),
-      'commodity': commodity,
-      'quantity': quantity,
-      'contactPerson': contactPerson,
-      'phoneNumber': phoneNumber,
-      'pickUpAddress': pickUpAddress.toJson(),
-      'destinationAddress': destinationAddress.toJson(),
-      'pickupDate': pickupDate.toString(),
-      'transportType': transportType.toString(),
-      'goodMovement': goodMovement.toString(),
-    };
-  }
+  Map<String, dynamic> toJson() => _$CommodityTicketToJson(this);
 }

@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 import 'utils/controllers/controllers.dart';
 
 /// models
-import 'utils/pre_created_data/commodity_tickets/commodity_tickets.dart';
+import 'utils/pre_created_data/all_dummy_data.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -58,10 +58,12 @@ void main() async {
       providers: [
         ChangeNotifierProvider<CommodityTicketController>(
             create: (_) => CommodityTicketController()),
-        // ChangeNotifierProvider<AddressController>(
-        //     create: (_) => AddressController()),
-        // ChangeNotifierProvider<CommodityOwnerController>(
-        //     create: (_) => CommodityOwnerController()),
+        ChangeNotifierProvider<FarmAddressController>(
+            create: (_) => FarmAddressController()),
+        ChangeNotifierProvider<WarehouseAddressController>(
+            create: (_) => WarehouseAddressController()),
+        ChangeNotifierProvider<CommodityOwnerController>(
+            create: (_) => CommodityOwnerController()),
       ],
       child: const MyApp(),
     ),
@@ -89,4 +91,26 @@ void createDummyCommodityTickets(BuildContext context) {
   commodityTicketController.addCommodityTicket(commodityTicket2());
   commodityTicketController.addCommodityTicket(commodityTicket3());
   commodityTicketController.addCommodityTicket(commodityTicket4());
+
+  FarmAddressController farmAddressController =
+      Provider.of<FarmAddressController>(context, listen: false);
+  farmAddressController.addAddress(FarmAddress1());
+  farmAddressController.addAddress(FarmAddress2());
+  farmAddressController.addAddress(FarmAddress3());
+  farmAddressController.addAddress(FarmAddress4());
+
+  WarehouseAddressController warehouseAddressController =
+      Provider.of<WarehouseAddressController>(context, listen: false);
+  warehouseAddressController.addAddress(WarehouseAddress1());
+  warehouseAddressController.addAddress(WarehouseAddress2());
+  warehouseAddressController.addAddress(WarehouseAddress3());
+  warehouseAddressController.addAddress(WarehouseAddress4());
+
+  CommodityOwnerController commodityOwnerController =
+      Provider.of<CommodityOwnerController>(context, listen: false);
+  // commodityOwnerController.commodityOwners();
+  commodityOwnerController.addCommodityOwner(commodityOwner1());
+  commodityOwnerController.addCommodityOwner(commodityOwner2());
+  commodityOwnerController.addCommodityOwner(commodityOwner3());
+  commodityOwnerController.addCommodityOwner(commodityOwner4());
 }
