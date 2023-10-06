@@ -21,6 +21,7 @@ class addCommodityDetails extends StatefulWidget {
 class _MyAppState extends State<addCommodityDetails> {
   late List<CommodityTicket> commodityTickets = widget.commodityTickets;
   late int index = widget.index;
+  bool showDetails = false;
   @override
   Widget build(BuildContext context) {
     return addCommDetails(context, this);
@@ -45,7 +46,6 @@ class _MyAppState extends State<addCommodityDetails> {
     var destId = commodityTicket.destinationAddressId;
     var userId = commodityTicket.destinationAddressId;
 
-    bool showDetails = true;
     CommodityOwner comOwner = commodityOwners
         .firstWhere((commodityOwner) => commodityOwner.id == ownerId);
     FarmAddress pickAd =
@@ -79,9 +79,7 @@ class _MyAppState extends State<addCommodityDetails> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Nothing to Show! ${farmAddresses.length}'),
                           iconLabel(
-                            label: 'Ticket Number',
                             context: context,
                             mainText: commodityTicket.ticketNumber,
                             textSize: 'bodyMedium',
@@ -89,41 +87,53 @@ class _MyAppState extends State<addCommodityDetails> {
                           ),
                           Text(
                             '${commodityTicket.commodity}  ${commodityTicket.quantity}',
-                            style: Theme.of(context).textTheme.titleLarge,
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
                           Text(comOwner.firmName,
-                              style: Theme.of(context).textTheme.bodyLarge),
+                              style: Theme.of(context).textTheme.bodyMedium),
                           Visibility(
                             visible: showDetails,
                             child: Text(
                                 'Job Created by \n${user.name}  ${user.phoneNumbers}'),
                           ),
                           const Divider(),
-                          Text(
-                            'Pick up point - ${pickAd.villageOrTaluk}',
-                            style: Theme.of(context).textTheme.titleSmall,
-                          ),
-                          Text(
-                            DateFormat('h:mm a  --  d MMM yyyy')
-                                .format(commodityTicket.pickupDate),
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(color: color1),
+                          Row(
+                            children: [
+                              Text(
+                                'Pick up - ${pickAd.villageOrTaluk}',
+                                style: Theme.of(context).textTheme.titleSmall,
+                              ),
+                              Text(
+                                DateFormat('  d MMM yyyy')
+                                    .format(commodityTicket.pickupDate),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(color: color1),
+                              ),
+                            ],
                           ),
                           iconLabel(
-                            label: 'Transport Provided by',
-                            type: 'Transport',
                             context: context,
-                            mainText: commodityTicket.transportType,
+                            mainText:
+                                '${commodityTicket.transportType} Transport',
                             textSize: 'bodyMedium',
                             color: color1,
                           ),
                           Text(pickAd.firmName),
-                          Text(pickAd.street),
-                          // Text(pickAd.villageOrTaluk),
-                          Text(
-                              '${pickAd.zilla}, ${pickAd.state} - ${pickAd.pincode}'),
+
+                          Visibility(
+                            visible: showDetails,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(pickAd.street),
+                                // Text(pickAd.villageOrTaluk),
+                                Text(
+                                    '${pickAd.zilla}, ${pickAd.state} - ${pickAd.pincode}'),
+                              ],
+                            ),
+                          ),
                           //Text(pickAd.state),
 
                           const Divider(),
@@ -132,10 +142,19 @@ class _MyAppState extends State<addCommodityDetails> {
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                           Text(destAd.firmName),
-                          Text(destAd.street),
-                          // Text(destAd.villageOrTaluk),
-                          Text(
-                              '${destAd.zilla}, ${destAd.state} -${destAd.pincode}'),
+
+                          Visibility(
+                            visible: showDetails,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(destAd.street),
+                                // Text(destAd.villageOrTaluk),
+                                Text(
+                                    '${destAd.zilla}, ${destAd.state} -${destAd.pincode}'),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
