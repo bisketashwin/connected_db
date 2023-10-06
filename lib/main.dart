@@ -1,14 +1,14 @@
 // main.dart
 
 import 'package:flutter/material.dart';
+import 'package:material3_app/utils/pre_created_data/users_data_dummy.dart';
 import 'package:provider/provider.dart';
 import 'app_views.dart';
 import 'theme/my_new_theme.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-/// controller
-import 'utils/controllers/controllers.dart';
+import 'utils/models/models.dart';
 
 /// models
 import 'utils/pre_created_data/all_dummy_data.dart';
@@ -64,6 +64,11 @@ void main() async {
             create: (_) => WarehouseAddressController()),
         ChangeNotifierProvider<CommodityOwnerController>(
             create: (_) => CommodityOwnerController()),
+        ChangeNotifierProvider<CommodityLotController>(
+            create: (_) => CommodityLotController()),
+        ChangeNotifierProvider<GoodsVehicleController>(
+            create: (_) => GoodsVehicleController()),
+        ChangeNotifierProvider<UserController>(create: (_) => UserController()),
       ],
       child: const MyApp(),
     ),
@@ -94,17 +99,17 @@ void createDummyCommodityTickets(BuildContext context) {
 
   FarmAddressController farmAddressController =
       Provider.of<FarmAddressController>(context, listen: false);
-  farmAddressController.addAddress(FarmAddress1());
-  farmAddressController.addAddress(FarmAddress2());
-  farmAddressController.addAddress(FarmAddress3());
-  farmAddressController.addAddress(FarmAddress4());
+  farmAddressController.addFarmAddress(FarmAddress1());
+  farmAddressController.addFarmAddress(FarmAddress2());
+  farmAddressController.addFarmAddress(FarmAddress3());
+  farmAddressController.addFarmAddress(FarmAddress4());
 
   WarehouseAddressController warehouseAddressController =
       Provider.of<WarehouseAddressController>(context, listen: false);
-  warehouseAddressController.addAddress(WarehouseAddress1());
-  warehouseAddressController.addAddress(WarehouseAddress2());
-  warehouseAddressController.addAddress(WarehouseAddress3());
-  warehouseAddressController.addAddress(WarehouseAddress4());
+  warehouseAddressController.addWarehouseAddress(WarehouseAddress1());
+  warehouseAddressController.addWarehouseAddress(WarehouseAddress2());
+  warehouseAddressController.addWarehouseAddress(WarehouseAddress3());
+  warehouseAddressController.addWarehouseAddress(WarehouseAddress4());
 
   CommodityOwnerController commodityOwnerController =
       Provider.of<CommodityOwnerController>(context, listen: false);
@@ -113,4 +118,16 @@ void createDummyCommodityTickets(BuildContext context) {
   commodityOwnerController.addCommodityOwner(commodityOwner2());
   commodityOwnerController.addCommodityOwner(commodityOwner3());
   commodityOwnerController.addCommodityOwner(commodityOwner4());
+
+  UserController userController =
+      Provider.of<UserController>(context, listen: false);
+  // commodityOwnerController.commodityOwners();
+  userController.addUser(user1());
+  userController.addUser(user2());
+  userController.addUser(user3());
+  userController.addUser(user4());
+
+  // GoodsVehicleController goodsVehicleController =
+  //     Provider.of<GoodsVehicleController>(context, listen: false);
+  //     goodsVehicleController.addGoodsVehicle(good)
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // import 'package:intl/intl.dart';
 
 import 'package:material3_app/theme/custom_color.dart';
-import 'package:material3_app/utils/controllers/controllers.dart';
+import 'package:material3_app/utils/models/controllers.dart';
 import 'package:material3_app/utils/models/models.dart';
 import 'package:material3_app/utils/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +49,8 @@ class _Tab2AState extends State<Tab2A> {
               itemCount: commodityTickets.length,
               itemBuilder: (context, index) {
                 // return Text(commodityTickets[index].companyName);
-                return commodityCardDetails(context, commodityTickets, index);
+                return addCommodityDetails(
+                    commodityTickets: commodityTickets, index: index);
               },
             ),
             // cardWithBanner(context, _showDetails),

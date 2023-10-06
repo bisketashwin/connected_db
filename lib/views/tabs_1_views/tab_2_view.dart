@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 // import 'package:intl/intl.dart';
 
 import 'package:material3_app/theme/custom_color.dart';
-import 'package:material3_app/utils/controllers/controllers.dart';
+// import 'package:material3_app/utils/models/controllers.dart';
 import 'package:material3_app/utils/models/models.dart';
 import 'package:material3_app/utils/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +12,7 @@ class Tab2 extends StatefulWidget {
   final VoidCallback showNavigation;
   final VoidCallback hideNavigation;
 
-  const Tab2(
-      {Key? key, required this.showNavigation, required this.hideNavigation})
-      : super(key: key);
+  Tab2({Key? key, required this.showNavigation, required this.hideNavigation});
 
   @override
   State<Tab2> createState() => _Tab2State();
@@ -64,7 +62,7 @@ class _Tab2State extends State<Tab2> {
       backgroundColor:
           Theme.of(context).extension<CustomColors>()!.sourceCustomcolor2,
       body: Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+        padding: EdgeInsets.only(left: 20.0, right: 20.0),
         child: ListView(
           controller: scrollController,
           shrinkWrap:
@@ -79,8 +77,8 @@ class _Tab2State extends State<Tab2> {
               ///NOTE:  these 3 are super critical properties for nested lsit views to wrok
               itemCount: commodityTickets.length,
               itemBuilder: (context, index) {
-                // return Text(commodityTickets[index].companyName);
-                return commodityCardDetails(context, commodityTickets, index);
+                return addCommodityDetails(
+                    commodityTickets: commodityTickets, index: index);
               },
             ),
             // cardWithBanner(context, _showDetails),

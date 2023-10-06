@@ -1,7 +1,7 @@
 import '../models/models.dart';
 
-Address FarmAddress1() {
-  return Address(
+FarmAddress FarmAddress1() {
+  return FarmAddress(
     id: '00001',
     firmName: 'MSR Fruits Farm',
     street: 'Chikka Kukkanahalli, Guddarahalli, hearaghatta',
@@ -13,8 +13,8 @@ Address FarmAddress1() {
   );
 }
 
-Address FarmAddress2() {
-  return Address(
+FarmAddress FarmAddress2() {
+  return FarmAddress(
     id: '00002',
     firmName: 'Acme Corporation',
     street: 'Sy 79/6, Muppadighatta, Madhure Hobli',
@@ -26,8 +26,8 @@ Address FarmAddress2() {
   );
 }
 
-Address FarmAddress3() {
-  return Address(
+FarmAddress FarmAddress3() {
+  return FarmAddress(
     id: '00003',
     firmName: 'Green Farms',
     street: 'Sy 56/2, Gundanapalya, Kothanur Post',
@@ -39,8 +39,8 @@ Address FarmAddress3() {
   );
 }
 
-Address FarmAddress4() {
-  return Address(
+FarmAddress FarmAddress4() {
+  return FarmAddress(
     id: '00004',
     firmName: 'Organic Harvest',
     street: 'Sy 45/1, Mallathahalli, Magadi Road',

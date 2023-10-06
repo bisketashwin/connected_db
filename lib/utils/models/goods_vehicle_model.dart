@@ -1,49 +1,78 @@
 // goods_vehicle_model.dart
+import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:uuid/uuid.dart';
+import 'dart:convert';
 
+part 'goods_vehicle_model.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class GoodsVehicle {
-  String id;
-  String registrationNumber;
-  String unloadedWeight;
-  String covered;
-  String loadCarryingCapacity;
-  String driverName;
-  String driverContactNumber;
-  DateTime timeOfArrival;
+  String id; // - for connecting the DB tables - used in commodity lot
+  String commodityLotId; // as driver needs to access and input data
+  //access to pick up and destination address
+  String registrationNumber; // complete vehicle registration number
+  String unloadedWeight; // to caluculate wight of good in wight bridge
+  String covered; // for owner to decide if this is right type of vehicle
+  String loadCarryingCapacity; // for owner to decide how much to load
+  String driverName; // for contact by company or customer
+  String driverContactNumber; // for contact by company or customer
+  // DateTime timeOfArrival; // TODO: commneted as not able to assign defult value
 
   GoodsVehicle({
-    this.id = '',
-    required this.registrationNumber,
-    required this.unloadedWeight,
-    required this.covered,
-    required this.loadCarryingCapacity,
-    required this.driverName,
-    required this.driverContactNumber,
-    required this.timeOfArrival,
+    this.id = '00000',
+    this.commodityLotId = '00000',
+    this.registrationNumber = 'not assigned',
+    this.unloadedWeight = 'not assigned',
+    this.covered = 'not assigned',
+    this.loadCarryingCapacity = 'not assigned',
+    this.driverName = 'not assigned',
+    this.driverContactNumber = 'not assigned',
+    // this.timeOfArrival = DateTime(2017, 9, 7, 17, 30),
   });
 
-  factory GoodsVehicle.fromJson(Map<String, dynamic> json) {
-    return GoodsVehicle(
-      id: json['id'] as String,
-      registrationNumber: json['registrationNumber'] as String,
-      unloadedWeight: json['unloadedWeight'] as String,
-      covered: json['covered'] as String,
-      loadCarryingCapacity: json['loadCarryingCapacity'] as String,
-      driverName: json['driverName'] as String,
-      driverContactNumber: json['driverContactNumber'] as String,
-      timeOfArrival: DateTime.parse(json['timeOfArrival'] as String),
-    );
+  factory GoodsVehicle.fromJson(Map<String, dynamic> json) =>
+      _$GoodsVehicleFromJson(json);
+
+  Map<String, dynamic> toJson() => _$GoodsVehicleToJson(this);
+}
+
+class GoodsVehicleController extends ChangeNotifier {
+  final List<GoodsVehicle> _goodsVehicles = [];
+  final Uuid _uuid = const Uuid();
+
+  List<GoodsVehicle> get goodsVehicles => _goodsVehicles;
+
+  // Add a function to generate a unique ID for a new commodity ticket.
+  String generateUniqueId() {
+    return _uuid.v4();
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'registrationNumber': registrationNumber,
-      'unloadedWeight': unloadedWeight,
-      'covered': covered,
-      'loadCarryingCapacity': loadCarryingCapacity,
-      'driverName': driverName,
-      'driverContactNumber': driverContactNumber,
-      'timeOfArrival': timeOfArrival.toString(),
-    };
+  // Add a function to create a new commodity ticket.
+  void addGoodsVehicle(GoodsVehicle goodsVehicle) {
+    _goodsVehicles.add(goodsVehicle);
+    notifyListeners();
+  }
+
+  // Add a function to serialize a GoodsVehicle object to JSON.
+  String serializeGoodsVehicleToJson(GoodsVehicle goodsVehicle) {
+    return jsonEncode(goodsVehicle.toJson());
+  }
+
+  // Add a function to deserialize a JSON string to a GoodsVehicle object.
+  GoodsVehicle deserializeGoodsVehicleFromJson(String json) {
+    return _$GoodsVehicleFromJson(jsonDecode(json));
+  }
+
+  // Add a function to edit a commodity ticket.
+  void editGoodsVehicle(GoodsVehicle goodsVehicle) {
+    _goodsVehicles[_goodsVehicles.indexOf(goodsVehicle)] = goodsVehicle;
+    notifyListeners();
+  }
+
+  // Add a function to delete a commodity ticket.
+  void deleteGoodsVehicle(GoodsVehicle goodsVehicle) {
+    _goodsVehicles.remove(goodsVehicle);
+    notifyListeners();
   }
 }

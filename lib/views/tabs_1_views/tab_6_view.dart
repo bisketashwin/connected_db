@@ -4,7 +4,7 @@ import 'package:material3_app/views/tabs_1_views/tab_1_sub_views/sub_view_1.dart
 import 'package:provider/provider.dart';
 
 import '../../theme/custom_color.dart';
-import '../../utils/controllers/controllers.dart';
+import '../../utils/models/controllers.dart';
 import '../../utils/models/models.dart';
 import '../../utils/widgets/widgets.dart';
 import 'tab_1_sub_views/sub_view_2.dart';
@@ -138,7 +138,8 @@ Widget commodityList(context) {
     itemCount: commodityTickets.length,
     itemBuilder: (context, index) {
       // return Text(commodityTickets[index].companyName);
-      return commodityCardDetails(context, commodityTickets, index);
+      return addCommodityDetails(
+          commodityTickets: commodityTickets, index: index);
     },
   );
   // cardWithBanner(context, _showDetails),

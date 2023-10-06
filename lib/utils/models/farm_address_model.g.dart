@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'address_model.dart';
+part of 'farm_address_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Address _$AddressFromJson(Map<String, dynamic> json) => Address(
+FarmAddress _$FarmAddressFromJson(Map<String, dynamic> json) => FarmAddress(
       id: json['id'] as String,
       firmName: json['firmName'] as String,
       nickName: json['nickName'] as String? ?? 'N/A',
@@ -16,9 +16,14 @@ Address _$AddressFromJson(Map<String, dynamic> json) => Address(
       state: json['state'] as String,
       pincode: json['pincode'] as String,
       googleMapLocation: json['googleMapLocation'] as String? ?? 'N/A',
+      commodityTicketsIds: (json['commodityTicketsIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const ['none'],
     );
 
-Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
+Map<String, dynamic> _$FarmAddressToJson(FarmAddress instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'firmName': instance.firmName,
       'nickName': instance.nickName,
@@ -28,4 +33,13 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'state': instance.state,
       'googleMapLocation': instance.googleMapLocation,
       'pincode': instance.pincode,
+      'commodityTicketsIds': instance.commodityTicketsIds,
     };
+
+FarmAddressController _$FarmAddressControllerFromJson(
+        Map<String, dynamic> json) =>
+    FarmAddressController();
+
+Map<String, dynamic> _$FarmAddressControllerToJson(
+        FarmAddressController instance) =>
+    <String, dynamic>{};

@@ -1,7 +1,7 @@
 import '../models/models.dart';
 
-Address WarehouseAddress1() {
-  return Address(
+WarehouseAddress WarehouseAddress1() {
+  return WarehouseAddress(
     id: '00001',
     firmName: 'Isiri Cold Storage',
     street: 'Sy, 74, 86 & 87, NH-4, Sompura, Industrial Area, Dobbaspet',
@@ -14,8 +14,8 @@ Address WarehouseAddress1() {
   );
 }
 
-Address WarehouseAddress2() {
-  return Address(
+WarehouseAddress WarehouseAddress2() {
+  return WarehouseAddress(
     id: '00002',
     firmName: 'Access Warehousing',
     street: '4th Block, 37/3, 80 Feet Ring Rd, 4th Block, Stage 1, KHB Colony',
@@ -27,8 +27,8 @@ Address WarehouseAddress2() {
   );
 }
 
-Address WarehouseAddress3() {
-  return Address(
+WarehouseAddress WarehouseAddress3() {
+  return WarehouseAddress(
     id: '00003',
     firmName: 'Fresh Stores',
     street: 'No. 32, 5th Cross, Marathahalli',
@@ -40,8 +40,8 @@ Address WarehouseAddress3() {
   );
 }
 
-Address WarehouseAddress4() {
-  return Address(
+WarehouseAddress WarehouseAddress4() {
+  return WarehouseAddress(
     id: '00004',
     firmName: 'Cool Storage',
     street: '7th Main, BTM Layout',

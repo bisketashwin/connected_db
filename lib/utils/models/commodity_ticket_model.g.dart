@@ -13,12 +13,15 @@ CommodityTicket _$CommodityTicketFromJson(Map<String, dynamic> json) =>
       pickUpAddressId: json['pickUpAddressId'] as String? ?? 'Not Generated',
       destinationAddressId:
           json['destinationAddressId'] as String? ?? 'Not Generated',
+      contactPersonId: json['contactPersonId'] as String? ?? 'Not Generated',
+      lotIds: (json['lotIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const ['not available'],
       ticketNumber: json['ticketNumber'] as String? ?? 'Not Generated',
       goodMovement: json['goodMovement'] as String,
       commodity: json['commodity'] as String,
       quantity: json['quantity'] as String,
-      contactPerson: json['contactPerson'] as String,
-      phoneNumber: json['phoneNumber'] as String,
       transportType: json['transportType'] as String? ?? 'Company',
       pickupDate: DateTime.parse(json['pickupDate'] as String),
     );
@@ -27,14 +30,14 @@ Map<String, dynamic> _$CommodityTicketToJson(CommodityTicket instance) =>
     <String, dynamic>{
       'id': instance.id,
       'commodityOwnerId': instance.commodityOwnerId,
+      'contactPersonId': instance.contactPersonId,
       'pickUpAddressId': instance.pickUpAddressId,
       'destinationAddressId': instance.destinationAddressId,
+      'lotIds': instance.lotIds,
       'ticketNumber': instance.ticketNumber,
       'goodMovement': instance.goodMovement,
       'commodity': instance.commodity,
       'quantity': instance.quantity,
-      'contactPerson': instance.contactPerson,
-      'phoneNumber': instance.phoneNumber,
       'transportType': instance.transportType,
       'pickupDate': instance.pickupDate.toIso8601String(),
     };

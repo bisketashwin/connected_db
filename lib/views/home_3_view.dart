@@ -25,16 +25,15 @@ class _HomeView3State extends State<HomeView3> {
             hideNavigation: hideNav,
             showNavigation: showNav,
           ),
-          tabDummy(),
-          // tabDummy(),
+
           Tab2(
             hideNavigation: hideNav,
             showNavigation: showNav,
           ),
-          // Tab5(
-          //   hideNavigation: hideNav,
-          //   showNavigation: showNav,
-          // ),
+          Tab5(
+            hideNavigation: hideNav,
+            showNavigation: showNav,
+          ),
         ],
       ),
       bottomNavigationBar: AnimatedContainer(

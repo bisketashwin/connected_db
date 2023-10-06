@@ -5,7 +5,7 @@ import 'package:material3_app/theme/custom_color.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/constants/constants_1.dart';
-import '../../../utils/controllers/controllers.dart';
+import '../../../utils/models/controllers.dart';
 import '../../../utils/models/models.dart';
 import '../../../utils/widgets/widgets.dart';
 
