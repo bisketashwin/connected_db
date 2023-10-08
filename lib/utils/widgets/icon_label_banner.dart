@@ -29,23 +29,23 @@ Widget iconLabel(
   switch (textSize) {
     case 'bodyMedium':
       style = Theme.of(context).textTheme.bodyMedium!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: color,
+          // fontWeight: FontWeight.w600,
+          // color: color,
           );
       iconSize = 16.0;
       break;
     case 'bodySmall':
       style = Theme.of(context).textTheme.bodySmall!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: color,
+          // fontWeight: FontWeight.w600,
+          // color: color,
           );
       iconSize = 20.0;
       break;
     default:
       // by default it 'bodyLarge'
       style = Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontWeight: FontWeight.w600,
-            color: color,
+          // fontWeight: FontWeight.w600,
+          // color: color,
           );
       iconSize = 20.0;
   }
@@ -64,7 +64,7 @@ Widget iconLabel(
               child: FaIcon(
                 myIcon,
                 size: iconSize,
-                color: color,
+                // color: color,
               ),
             ),
             TextSpan(

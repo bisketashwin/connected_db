@@ -18,7 +18,7 @@ Widget commodityCardSmall(context, commodityTickets, index) {
       child: Card(
         child: Column(
           children: [
-            topBannerStatus(context, 1),
+            topBannerStatus(context: context, status: 1),
             Padding(
               padding: const EdgeInsets.only(
                   left: 16, right: 16, bottom: 16, top: 5),

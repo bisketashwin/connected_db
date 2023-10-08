@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:material3_app/theme/custom_color.dart';
 import 'package:provider/provider.dart';
 
+import '../../../utils/commonactions/common_actions.dart';
 import '../../../utils/constants/constants_1.dart';
 import '../../../utils/models/controllers.dart';
 import '../../../utils/models/models.dart';
@@ -149,9 +150,12 @@ class _MyAppState extends State<SubSiew2> {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          Column(children: [
-                            getGcommodityThumb(name: commodityTicket.commodity)
-                          ]),
+                          Column(
+                            children: [
+                              getGcommodityThumb(
+                                  name: commodityTicket.commodity),
+                            ],
+                          ),
                           SizedBox(
                             width: 10,
                           ),
@@ -193,33 +197,6 @@ class _MyAppState extends State<SubSiew2> {
       ),
     );
   }
-}
-
-Widget getGcommodityThumb({required String name}) {
-  // var keywords = ["default", "grape", "cotton", "rice", "wheat"];
-  Iterable<String> keywords = listOfCommodityThumbs().keys;
-
-  String keyword = findKeyword(name, keywords);
-
-  String? imagePath = listOfCommodityThumbs()[keyword];
-
-  return ClipRRect(
-    borderRadius: BorderRadius.circular(50),
-    child: Image.asset(
-      imagePath!,
-      width: 50,
-    ),
-  );
-}
-
-String findKeyword(String string, Iterable<String> keywords) {
-  string = string.toLowerCase();
-  for (final keyword in keywords) {
-    if (string.toLowerCase().contains(keyword.toLowerCase())) {
-      return keyword;
-    }
-  }
-  return 'default';
 }
 
 Widget actionChips2(context) {

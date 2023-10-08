@@ -3,6 +3,7 @@ import '../models/models.dart';
 CommodityTicket commodityTicket1() {
   return CommodityTicket(
     id: '00001',
+    ticketNumber: '00001',
     commodityOwnerId: '00001',
     contactPersonId: '00001',
     pickUpAddressId: '00001',
@@ -17,6 +18,7 @@ CommodityTicket commodityTicket1() {
 CommodityTicket commodityTicket2() {
   return CommodityTicket(
     id: '00002',
+    ticketNumber: '00002',
     commodityOwnerId: '00002',
     contactPersonId: '00002',
     pickUpAddressId: '00002',
@@ -32,6 +34,7 @@ CommodityTicket commodityTicket2() {
 CommodityTicket commodityTicket3() {
   return CommodityTicket(
     id: '00003',
+    ticketNumber: '00003',
     commodityOwnerId: '00003',
     contactPersonId: '00003',
     pickUpAddressId: '00003',
@@ -46,6 +49,7 @@ CommodityTicket commodityTicket3() {
 CommodityTicket commodityTicket4() {
   return CommodityTicket(
     id: '00004',
+    ticketNumber: '00004',
     commodityOwnerId: '00004',
     contactPersonId: '00004',
     pickUpAddressId: '00004',

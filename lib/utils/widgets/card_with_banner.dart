@@ -21,7 +21,7 @@ Widget cardWithBanner(BuildContext context, showDetails) {
       child: Column(
         // mainAxisSize: MainAxisSize.min,
         children: [
-          topBannerStatus(context, 1),
+          topBannerStatus(context: context, status: 1),
           const Padding(
             padding: EdgeInsets.only(top: 20, bottom: 20),
             child: Text('This would be visible all time. showDetails'),

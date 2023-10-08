@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 import '../constants/constants_1.dart';
 
-Widget topBannerStatus(BuildContext context, int status) {
+Widget topBannerStatus(
+    {required context, required int status, timeString = ''}) {
   var color1 = Theme.of(context).colorScheme.onBackground.withOpacity(0.6);
   // var color2 = Theme.of(context).extension<CustomColors>()!.sourceCustomcolor3;
 
@@ -67,6 +69,9 @@ Widget topBannerStatus(BuildContext context, int status) {
           ),
           Text(
             statusMessage,
+          ),
+          Text(
+            '  ➔  ETA$timeString',
           ),
         ],
       )

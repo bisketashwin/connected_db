@@ -4,6 +4,8 @@ import 'package:material3_app/utils/models/models.dart';
 import 'package:material3_app/utils/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
+import '../commonactions/common_actions.dart';
+
 class addCommodityDetails extends StatefulWidget {
   final List<CommodityTicket> commodityTickets;
   final int index;
@@ -68,7 +70,12 @@ class _MyAppState extends State<addCommodityDetails> {
         child: Card(
           child: Column(
             children: [
-              topBannerStatus(context, 1),
+              topBannerStatus(
+                context: context,
+                status: 1,
+                timeString: DateFormat('  d MMM yyyy')
+                    .format(commodityTicket.pickupDate),
+              ),
               Padding(
                 padding: const EdgeInsets.only(
                     left: 16, right: 16, bottom: 16, top: 5),
@@ -79,54 +86,82 @@ class _MyAppState extends State<addCommodityDetails> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          iconLabel(
-                            context: context,
-                            mainText: commodityTicket.ticketNumber,
-                            textSize: 'bodyMedium',
-                            color: color1,
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  getGcommodityThumb(
+                                      name: commodityTicket.commodity),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${commodityTicket.commodity}  ${commodityTicket.quantity}',
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                  ),
+                                  Text('Owner: ${comOwner.firmName}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium),
+                                  Row(
+                                    children: [
+                                      iconLabel(
+                                        context: context,
+                                        mainText: commodityTicket.ticketNumber,
+                                        textSize: 'bodyMedium',
+                                        color: color1,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      iconLabel(
+                                        context: context,
+                                        mainText:
+                                            '${commodityTicket.transportType} Transport',
+                                        textSize: 'bodyMedium',
+                                        color: color1,
+                                        type: 'Transport',
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                          Text(
-                            '${commodityTicket.commodity}  ${commodityTicket.quantity}',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          Text(comOwner.firmName,
-                              style: Theme.of(context).textTheme.bodyMedium),
                           Visibility(
                             visible: showDetails,
                             child: Text(
                                 'Job Created by \n${user.name}  ${user.phoneNumbers}'),
                           ),
                           const Divider(),
-                          Row(
-                            children: [
-                              Text(
-                                'Pick up - ${pickAd.villageOrTaluk}',
-                                style: Theme.of(context).textTheme.titleSmall,
-                              ),
-                              Text(
-                                DateFormat('  d MMM yyyy')
-                                    .format(commodityTicket.pickupDate),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall!
-                                    .copyWith(color: color1),
-                              ),
-                            ],
+                          Visibility(
+                            visible: !showDetails,
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Pick up - ${pickAd.firmName}, ${pickAd.villageOrTaluk}',
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                              ],
+                            ),
                           ),
-                          iconLabel(
-                            context: context,
-                            mainText:
-                                '${commodityTicket.transportType} Transport',
-                            textSize: 'bodyMedium',
-                            color: color1,
-                          ),
-                          Text(pickAd.firmName),
 
                           Visibility(
                             visible: showDetails,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  'Pick up - ${pickAd.villageOrTaluk}',
+                                  style: Theme.of(context).textTheme.titleSmall,
+                                ),
+                                Text(pickAd.firmName),
                                 Text(pickAd.street),
                                 // Text(pickAd.villageOrTaluk),
                                 Text(
@@ -137,17 +172,24 @@ class _MyAppState extends State<addCommodityDetails> {
                           //Text(pickAd.state),
 
                           const Divider(),
-                          Text(
-                            'Destination - ${destAd.villageOrTaluk}',
-                            style: Theme.of(context).textTheme.titleSmall,
+                          Visibility(
+                            visible: !showDetails,
+                            child: Text(
+                              'Destination - ${destAd.firmName}, ${destAd.villageOrTaluk}',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
                           ),
-                          Text(destAd.firmName),
 
                           Visibility(
                             visible: showDetails,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  'Destination - ${destAd.villageOrTaluk}',
+                                  style: Theme.of(context).textTheme.titleSmall,
+                                ),
+                                Text(destAd.firmName),
                                 Text(destAd.street),
                                 // Text(destAd.villageOrTaluk),
                                 Text(
