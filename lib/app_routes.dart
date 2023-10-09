@@ -3,11 +3,12 @@
 // ignore_for_file: constant_identifier_names
 
 class Routes {
-  // static const THEM_TEST = '/themTest';
-  // static const MYLAYOUT1 = '/myLayout1';
-  // static const MYLAYOUT2 = '/myLayout2';
   static const LOGIN = '/login';
   static const HOME = '/home';
+  static const ADD_COMM_DETAILS = '/addCommDetails';
+}
+
+
   // static const SETTINGS = '/settings';
   // static const PROFILE_EDIT = '/profileEdit';
   // static const SIGNUP = '/signUp';
@@ -19,4 +20,3 @@ class Routes {
   // the TAB1_SCREEN3 will get used in app_pages to link to ctual view
   /// '/tab1/screen3' will be used in Navigate call out
   // ... continue for each screen in each tab
-}

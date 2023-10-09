@@ -1,7 +1,9 @@
 // import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
+import '../../views/log_in_view.dart';
 import 'commodity_thumbs.dart';
 
 class MyDrawer1 extends StatelessWidget {
@@ -151,7 +153,7 @@ class MyDrawer1 extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20),
                 child: ListTile(
                   onTap: () {
-                    //
+                    Get.offAll(() => LoginFormView());
                   },
                   leading: const FaIcon(FontAwesomeIcons.rightFromBracket),
                   title: const Text('Log Out'),

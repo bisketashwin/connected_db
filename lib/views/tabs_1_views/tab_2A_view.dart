@@ -49,7 +49,7 @@ class _Tab2AState extends State<Tab2A> {
               itemCount: commodityTickets.length,
               itemBuilder: (context, index) {
                 // return Text(commodityTickets[index].companyName);
-                return addCommodityDetails(
+                return addCommodityDetails1(
                     commodityTickets: commodityTickets, index: index);
               },
             ),

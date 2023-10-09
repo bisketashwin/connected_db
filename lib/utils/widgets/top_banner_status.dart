@@ -57,21 +57,32 @@ Widget topBannerStatus(
         ),
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        // mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FaIcon(
             statusIcon,
-            size: 20,
+            size: 16,
             color: color1,
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          Text(
+            statusMessage,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           const SizedBox(
             width: 10,
           ),
-          Text(
-            statusMessage,
+          FaIcon(
+            FontAwesomeIcons.arrowRight,
+            size: 16,
+            color: color1,
           ),
           Text(
-            '  ➔  ETA$timeString',
+            '  ETA$timeString',
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
       )

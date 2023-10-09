@@ -11,21 +11,7 @@ Widget iconLabel(
   TextStyle style;
   double iconSize;
   IconData myIcon;
-
-  //////////////////////
-  switch (type) {
-    case 'Date Time':
-      myIcon = FontAwesomeIcons.calendarDay;
-      break;
-    case 'Transport':
-      myIcon = FontAwesomeIcons.truck;
-      break;
-    default:
-      // by default it 'Ticket Number'
-      myIcon = FontAwesomeIcons.ticket;
-  }
-
-  ///////////
+///////////
   switch (textSize) {
     case 'bodyMedium':
       style = Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -49,6 +35,20 @@ Widget iconLabel(
           );
       iconSize = 20.0;
   }
+  //////////////////////
+  switch (type) {
+    case 'Date Time':
+      myIcon = FontAwesomeIcons.calendarDay;
+      break;
+    case 'Transport':
+      myIcon = FontAwesomeIcons.truck;
+      iconSize = iconSize * 0.8;
+      break;
+    default:
+      // by default it 'Ticket Number'
+      myIcon = FontAwesomeIcons.ticket;
+  }
+
   ///////////////////////////
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ Widget iconLabel(
               child: FaIcon(
                 myIcon,
                 size: iconSize,
-                // color: color,
+                color: color,
               ),
             ),
             TextSpan(

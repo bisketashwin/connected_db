@@ -6,11 +6,11 @@ import 'package:provider/provider.dart';
 
 import '../commonactions/common_actions.dart';
 
-class addCommodityDetails extends StatefulWidget {
+class addCommodityDetails1 extends StatefulWidget {
   final List<CommodityTicket> commodityTickets;
   final int index;
 
-  const addCommodityDetails({
+  const addCommodityDetails1({
     Key? key,
     required this.commodityTickets,
     required this.index,
@@ -20,7 +20,7 @@ class addCommodityDetails extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<addCommodityDetails> {
+class _MyAppState extends State<addCommodityDetails1> {
   late List<CommodityTicket> commodityTickets = widget.commodityTickets;
   late int index = widget.index;
   bool showDetails = false;
@@ -142,13 +142,9 @@ class _MyAppState extends State<addCommodityDetails> {
                           const Divider(),
                           Visibility(
                             visible: !showDetails,
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Pick up - ${pickAd.firmName}, ${pickAd.villageOrTaluk}',
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                              ],
+                            child: Text(
+                              'Pick up - ${pickAd.firmName}, ${pickAd.villageOrTaluk}',
+                              style: Theme.of(context).textTheme.bodySmall,
                             ),
                           ),
 
@@ -176,7 +172,7 @@ class _MyAppState extends State<addCommodityDetails> {
                             visible: !showDetails,
                             child: Text(
                               'Destination - ${destAd.firmName}, ${destAd.villageOrTaluk}',
-                              style: Theme.of(context).textTheme.bodyMedium,
+                              style: Theme.of(context).textTheme.bodySmall,
                             ),
                           ),
 

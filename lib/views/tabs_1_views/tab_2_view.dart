@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:material3_app/theme/custom_color.dart';
 // import 'package:material3_app/utils/models/controllers.dart';
 import 'package:material3_app/utils/models/models.dart';
+
 import 'package:material3_app/utils/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -62,7 +63,7 @@ class _Tab2State extends State<Tab2> {
       backgroundColor:
           Theme.of(context).extension<CustomColors>()!.sourceCustomcolor2,
       body: Padding(
-        padding: EdgeInsets.only(left: 20.0, right: 20.0),
+        padding: EdgeInsets.only(left: 5, right: 5.0),
         child: ListView(
           controller: scrollController,
           shrinkWrap:
@@ -77,7 +78,7 @@ class _Tab2State extends State<Tab2> {
               ///NOTE:  these 3 are super critical properties for nested lsit views to wrok
               itemCount: commodityTickets.length,
               itemBuilder: (context, index) {
-                return addCommodityDetails(
+                return addCommodityMin1(
                     commodityTickets: commodityTickets, index: index);
               },
             ),

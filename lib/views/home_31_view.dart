@@ -3,14 +3,14 @@ import 'package:flutter/rendering.dart';
 
 import 'tabs_1_views/tabs_1_views.dart';
 
-class HomeView3 extends StatefulWidget {
-  const HomeView3({Key? key}) : super(key: key);
+class HomeView31 extends StatefulWidget {
+  const HomeView31({Key? key}) : super(key: key);
 
   @override
-  State<HomeView3> createState() => _HomeView3State();
+  State<HomeView31> createState() => _HomeView3State();
 }
 
-class _HomeView3State extends State<HomeView3> {
+class _HomeView3State extends State<HomeView31> {
   bool visible = true;
   int currentIndex = 0;
 
@@ -84,5 +84,14 @@ class _HomeView3State extends State<HomeView3> {
     setState(() {
       visible = true;
     });
+  }
+
+  tabDummy() {
+    return Center(
+      child: Container(
+        color: Colors.amber,
+        child: Text('Dummy'),
+      ),
+    );
   }
 }

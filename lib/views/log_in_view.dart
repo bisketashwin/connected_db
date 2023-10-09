@@ -36,7 +36,7 @@ class _LoginFormViewState extends State<LoginFormView> {
                     content: Text('The user `$username` was found.'),
                     actions: [
                       TextButton(
-                        onPressed: () => Navigator.of(context).pop(),
+                        onPressed: () => Get.back(),
                         child: const Text('OK'),
                       ),
                     ],
