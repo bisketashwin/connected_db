@@ -5,13 +5,21 @@ import 'package:intl/intl.dart';
 import '../constants/constants_1.dart';
 
 Widget topBannerStatus(
-    {required context, required int status, timeString = ''}) {
+    {required context,
+    required int status,
+    timeString = '',
+    textStle = 'bodySmall',
+    noRound = false}) {
   var color1 = Theme.of(context).colorScheme.onBackground.withOpacity(0.6);
   // var color2 = Theme.of(context).extension<CustomColors>()!.sourceCustomcolor3;
 
   Color statusColor;
   IconData statusIcon;
   String statusMessage;
+  TextStyle defaultTextStyle;
+  Radius borderRadius =
+      noRound ? const Radius.circular(0) : const Radius.circular(12.0);
+
   switch (status) {
     case 0:
       {
@@ -45,47 +53,59 @@ Widget topBannerStatus(
       break;
   }
 
-  return Container(
-      alignment: Alignment.center,
-      width: double.infinity,
-      height: 30,
-      decoration: BoxDecoration(
-        color: statusColor,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(12.0),
-          topRight: Radius.circular(12.0),
+  switch (textStle) {
+    case 'bodyMedium':
+      defaultTextStyle = Theme.of(context).textTheme.bodyMedium!;
+      break;
+    case 'bodyLarge':
+      defaultTextStyle = Theme.of(context).textTheme.bodyLarge!;
+      break;
+    default:
+      defaultTextStyle = Theme.of(context).textTheme.bodySmall!;
+  }
+
+  return DefaultTextStyle(
+    style: defaultTextStyle,
+    child: Container(
+        alignment: Alignment.center,
+        width: double.infinity,
+        height: 30,
+        decoration: BoxDecoration(
+          color: statusColor,
+          borderRadius: BorderRadius.only(
+            topLeft: borderRadius,
+            topRight: borderRadius,
+          ),
         ),
-      ),
-      child: Row(
-        // mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FaIcon(
-            statusIcon,
-            size: 16,
-            color: color1,
-          ),
-          const SizedBox(
-            width: 5,
-          ),
-          Text(
-            statusMessage,
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          FaIcon(
-            FontAwesomeIcons.arrowRight,
-            size: 16,
-            color: color1,
-          ),
-          Text(
-            '  ETA$timeString',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-        ],
-      )
-      // widget goes here
-      );
+        child: Row(
+          // mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FaIcon(
+              statusIcon,
+              size: 16,
+              color: color1,
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            Text(
+              statusMessage,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            FaIcon(
+              FontAwesomeIcons.arrowRight,
+              size: 16,
+              color: color1,
+            ),
+            Text(
+              '  ETA$timeString',
+            ),
+          ],
+        )
+        // widget goes here
+        ),
+  );
 }

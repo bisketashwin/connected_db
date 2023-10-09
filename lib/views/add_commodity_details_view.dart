@@ -62,7 +62,7 @@ class _MyAppState extends State<AddCommodityDetailsView> {
 
       ///////////
       var color1 = Theme.of(context).colorScheme.onBackground.withOpacity(0.6);
-      var defaultTextStyle = Theme.of(context).textTheme.bodySmall;
+      var defaultTextStyle = Theme.of(context).textTheme.bodyLarge;
 
       return Scaffold(
         appBar: AppBar(
@@ -75,147 +75,117 @@ class _MyAppState extends State<AddCommodityDetailsView> {
               // debugPrint('showDetails = $showDetails');
               // setState(() {});
             },
-            child: Card(
-              child: Column(
-                children: [
-                  topBannerStatus(
-                    context: context,
-                    status: 1,
-                    timeString: DateFormat('  d MMM yyyy')
-                        .format(commodityTicket.pickupDate),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 16, right: 16, bottom: 16, top: 5),
-                    child: Column(
-                      children: [
-                        DefaultTextStyle(
-                          style: defaultTextStyle!,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Column(
-                                    children: [
-                                      getGcommodityThumb(
-                                          name: commodityTicket.commodity),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '${commodityTicket.commodity}  ${commodityTicket.quantity}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium,
-                                      ),
-                                      Text('Owner: ${comOwner.firmName}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium),
-                                      Row(
-                                        children: [
-                                          iconLabel(
-                                            context: context,
-                                            mainText:
-                                                commodityTicket.ticketNumber,
-                                            textSize: 'bodyMedium',
-                                            color: color1,
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          iconLabel(
-                                            context: context,
-                                            mainText:
-                                                '${commodityTicket.transportType} Transport',
-                                            textSize: 'bodyMedium',
-                                            color: color1,
-                                            type: 'Transport',
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Visibility(
-                                visible: showDetails,
-                                child: Text(
-                                    'Job Created by \n${user.name}  ${user.phoneNumbers}'),
-                              ),
-                              const Divider(),
-                              Visibility(
-                                visible: !showDetails,
-                                child: Text(
-                                  'Pick up - ${pickAd.firmName}, ${pickAd.villageOrTaluk}',
-                                  style: Theme.of(context).textTheme.bodySmall,
+            child: Column(
+              children: [
+                topBannerStatus(
+                  context: context,
+                  status: 1,
+                  noRound: true,
+                  textStle: 'bodyLarge',
+                  timeString: DateFormat('  d MMM yyyy')
+                      .format(commodityTicket.pickupDate),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      DefaultTextStyle(
+                        style: defaultTextStyle!,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              children: [
+                                getGcommodityThumb(
+                                    name: commodityTicket.commodity,
+                                    size: 100.0),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${commodityTicket.commodity}  ${commodityTicket.quantity}',
+                                  style: Theme.of(context).textTheme.titleLarge,
                                 ),
-                              ),
-
-                              Visibility(
-                                visible: showDetails,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                Text(
+                                  'Owner: ${comOwner.firmName}',
+                                ),
+                                Row(
                                   children: [
-                                    Text(
-                                      'Pick up - ${pickAd.villageOrTaluk}',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall,
+                                    iconLabel(
+                                      context: context,
+                                      mainText: commodityTicket.ticketNumber,
+                                      textSize: 'bodyMedium',
+                                      color: color1,
                                     ),
-                                    Text(pickAd.firmName),
-                                    Text(pickAd.street),
-                                    // Text(pickAd.villageOrTaluk),
-                                    Text(
-                                        '${pickAd.zilla}, ${pickAd.state} - ${pickAd.pincode}'),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    iconLabel(
+                                      context: context,
+                                      mainText:
+                                          '${commodityTicket.transportType} Transport',
+                                      textSize: 'bodyMedium',
+                                      color: color1,
+                                      type: 'Transport',
+                                    ),
                                   ],
                                 ),
-                              ),
-                              //Text(pickAd.state),
+                              ],
+                            ),
+                            Text(
+                                'Job Created by \n${user.name}  ${user.phoneNumbers}'),
+                            const Divider(),
 
-                              const Divider(),
-                              Visibility(
-                                visible: !showDetails,
-                                child: Text(
-                                  'Destination - ${destAd.firmName}, ${destAd.villageOrTaluk}',
-                                  style: Theme.of(context).textTheme.bodySmall,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Pick up',
+                                  style: Theme.of(context).textTheme.titleLarge,
                                 ),
-                              ),
+                                Text(pickAd.firmName),
+                                Text(pickAd.street),
+                                Text(
+                                  pickAd.villageOrTaluk,
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                                Text(
+                                    '${pickAd.zilla}, ${pickAd.state} - ${pickAd.pincode}'),
+                              ],
+                            ),
+                            //Text(pickAd.state),
 
-                              Visibility(
-                                visible: showDetails,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Destination - ${destAd.villageOrTaluk}',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall,
-                                    ),
-                                    Text(destAd.firmName),
-                                    Text(destAd.street),
-                                    // Text(destAd.villageOrTaluk),
-                                    Text(
-                                        '${destAd.zilla}, ${destAd.state} -${destAd.pincode}'),
-                                  ],
+                            const Divider(),
+
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Destination',
+                                  style: Theme.of(context).textTheme.titleLarge,
                                 ),
-                              ),
-                            ],
-                          ),
+                                Text(destAd.firmName),
+                                Text(destAd.street),
+                                Text(
+                                  destAd.villageOrTaluk,
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                                Text(
+                                    '${destAd.zilla}, ${destAd.state} -${destAd.pincode}'),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
