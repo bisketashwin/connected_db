@@ -71,8 +71,9 @@ class _MyAppState extends State<addCommodityDetails1> {
           child: Column(
             children: [
               topBannerStatus(
+                goodMovement: commodityTicket.goodMovement,
                 context: context,
-                status: 1,
+                status: commodityTicket.status,
                 timeString: DateFormat('  d MMM yyyy')
                     .format(commodityTicket.pickupDate),
               ),

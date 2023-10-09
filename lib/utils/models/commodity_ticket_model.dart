@@ -18,6 +18,7 @@ class CommodityTicket {
   String commodity;
   String quantity;
   String transportType;
+  String status;
   DateTime pickupDate;
 
   CommodityTicket({
@@ -32,6 +33,7 @@ class CommodityTicket {
     required this.commodity,
     required this.quantity,
     this.transportType = 'Company',
+    this.status = 'Yet to Start',
     required this.pickupDate,
   });
 

@@ -79,7 +79,7 @@ class _MyAppState extends State<AddCommodityDetailsView> {
               children: [
                 topBannerStatus(
                   context: context,
-                  status: 1,
+                  status: commodityTicket.status,
                   noRound: true,
                   textStle: 'bodyLarge',
                   timeString: DateFormat('  d MMM yyyy')

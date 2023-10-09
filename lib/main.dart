@@ -88,15 +88,6 @@ class DummyCommodityTicketCreator extends StatelessWidget {
 }
 
 void createDummyCommodityTickets(BuildContext context) {
-  // Get an instance of the CommodityTicketController.
-  CommodityTicketController commodityTicketController =
-      Provider.of<CommodityTicketController>(context, listen: false);
-  // Add the dummy commodity tickets.
-  commodityTicketController.addCommodityTicket(commodityTicket1());
-  commodityTicketController.addCommodityTicket(commodityTicket2());
-  commodityTicketController.addCommodityTicket(commodityTicket3());
-  commodityTicketController.addCommodityTicket(commodityTicket4());
-
   FarmAddressController farmAddressController =
       Provider.of<FarmAddressController>(context, listen: false);
   farmAddressController.addFarmAddress(FarmAddress1());
@@ -126,6 +117,23 @@ void createDummyCommodityTickets(BuildContext context) {
   userController.addUser(user2());
   userController.addUser(user3());
   userController.addUser(user4());
+
+  // Get an instance of the CommodityTicketController.
+  CommodityTicketController commodityTicketController =
+      Provider.of<CommodityTicketController>(context, listen: false);
+  // Add the dummy commodity tickets.
+  commodityTicketController.addCommodityTicket(commodityTicket1());
+  commodityTicketController.addCommodityTicket(commodityTicket2());
+  commodityTicketController.addCommodityTicket(commodityTicket3());
+  commodityTicketController.addCommodityTicket(commodityTicket4());
+  commodityTicketController.addCommodityTicket(commodityTicket5());
+  commodityTicketController.addCommodityTicket(commodityTicket6());
+
+  List<CommodityTicket> commodityTickets =
+      Provider.of<CommodityTicketController>(context, listen: false)
+          .commodityTickets;
+
+  debugPrint('checking if the list is created ${commodityTickets.length}');
 
   // GoodsVehicleController goodsVehicleController =
   //     Provider.of<GoodsVehicleController>(context, listen: false);

@@ -8,6 +8,7 @@ import '../../utils/models/controllers.dart';
 import '../../utils/models/models.dart';
 import '../../utils/widgets/widgets.dart';
 import 'tab_1_sub_views/sub_view_2.dart';
+import 'tab_1_sub_views/sub_view_3.dart';
 
 class Tab6 extends StatefulWidget {
   final VoidCallback showNavigation;
@@ -68,6 +69,7 @@ class _Tab6State extends State<Tab6> {
                 // backgroundColor: Colors.amber,
                 expandedHeight: 10,
                 elevation: 0,
+                // TODO: this did not show any effect on 5.0 i would like the app bar to elevate on scroll need to check if background colour transperancy is making it not show up
                 floating: true,
                 snap: true,
                 // pinned: true,
@@ -111,10 +113,10 @@ class _Tab6State extends State<Tab6> {
                 title: Center(child: myTabBar1(context: context))),
           ],
           body: Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 5, right: 5),
             child: TabBarView(
               children: <Widget>[
-                SubSiew1(),
+                SubSiew3(),
                 SubSiew2(),
               ],
             ),

@@ -23,6 +23,7 @@ CommodityTicket _$CommodityTicketFromJson(Map<String, dynamic> json) =>
       commodity: json['commodity'] as String,
       quantity: json['quantity'] as String,
       transportType: json['transportType'] as String? ?? 'Company',
+      status: json['status'] as String? ?? 'Yet to Start',
       pickupDate: DateTime.parse(json['pickupDate'] as String),
     );
 
@@ -39,5 +40,6 @@ Map<String, dynamic> _$CommodityTicketToJson(CommodityTicket instance) =>
       'commodity': instance.commodity,
       'quantity': instance.quantity,
       'transportType': instance.transportType,
+      'status': instance.status,
       'pickupDate': instance.pickupDate.toIso8601String(),
     };

@@ -18,15 +18,15 @@ extension CommodityTicketStatusColor on CommodityTicketStatus {
   Color get color {
     switch (this) {
       case CommodityTicketStatus.notStarted:
-        return const Color(0xFF787878);
+        return Color.fromARGB(255, 196, 196, 196);
       case CommodityTicketStatus.inProgress:
         return const Color(0xFFFFC268);
       case CommodityTicketStatus.needsAttention:
-        return const Color(0xFFE24646);
+        return Color.fromARGB(255, 239, 93, 93);
       case CommodityTicketStatus.needsAttention:
         return const Color(0xFF787878);
       case CommodityTicketStatus.completed:
-        return const Color(0xFF46E27D);
+        return Color.fromARGB(255, 85, 226, 134);
       case CommodityTicketStatus.inward:
         return const Color(0xFF7CBAE7);
       case CommodityTicketStatus.outward:

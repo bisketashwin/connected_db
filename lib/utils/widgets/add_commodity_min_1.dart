@@ -33,7 +33,9 @@ class _MyAppState extends State<addCommodityMin1> {
 
   Widget addCommDetails(context, state) {
     /////////////////
-    List<CommodityTicket> commodityTickets = state.commodityTickets;
+
+    List<CommodityTicket> commodityTickets =
+        Provider.of<CommodityTicketController>(context).commodityTickets;
     int index = state.index;
     List<FarmAddress> farmAddresses =
         Provider.of<FarmAddressController>(context).farmAddresses;
@@ -63,43 +65,46 @@ class _MyAppState extends State<addCommodityMin1> {
     var defaultTextStyle = Theme.of(context).textTheme.bodySmall;
 
     return Center(
-        child: InkWell(
-            onTap: () {
-              // showDetails = !showDetails;
-              // debugPrint('showDetails = $showDetails');
-              // setState(() {});
+      child: InkWell(
+        onTap: () {
+          // showDetails = !showDetails;
+          // debugPrint('showDetails = $showDetails');
+          // setState(() {});
 
-              // this is getX implementation
-              Get.toNamed(Routes.ADD_COMM_DETAILS, arguments: {
-                'index': index,
-              });
-            },
-            child: Card(
-                child: Column(children: [
+          // this is getX implementation
+          Get.toNamed(Routes.ADD_COMM_DETAILS, arguments: {
+            'index': index,
+          });
+        },
+        child: Card(
+          child: Column(
+            children: [
               topBannerStatus(
+                goodMovement: commodityTicket.goodMovement,
                 context: context,
-                status: 1,
+                status: commodityTicket.status,
                 timeString: DateFormat('  d MMM yyyy')
                     .format(commodityTicket.pickupDate),
               ),
               Padding(
                   padding: const EdgeInsets.only(
-                      left: 16, right: 16, bottom: 16, top: 5),
+                      left: 15, right: 15, bottom: 15, top: 5),
                   child: Column(children: [
                     DefaultTextStyle(
                         style: defaultTextStyle!,
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(children: [
-                                Column(children: [
-                                  getGcommodityThumb(
-                                      name: commodityTicket.commodity),
-                                ]),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
+                              Row(
+                                children: [
+                                  Column(children: [
+                                    getGcommodityThumb(
+                                        name: commodityTicket.commodity),
+                                  ]),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -133,8 +138,10 @@ class _MyAppState extends State<addCommodityMin1> {
                                           type: 'Transport',
                                         )
                                       ])
-                                    ])
-                              ]),
+                                    ],
+                                  ),
+                                ],
+                              ),
                               const Divider(),
                               Text(
                                 'Pick up - ${pickAd.firmName}, ${pickAd.villageOrTaluk}',
@@ -150,6 +157,10 @@ class _MyAppState extends State<addCommodityMin1> {
                                   ))
                             ]))
                   ]))
-            ]))));
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

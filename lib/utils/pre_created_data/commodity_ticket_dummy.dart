@@ -11,6 +11,8 @@ CommodityTicket commodityTicket1() {
     goodMovement: 'Inward',
     commodity: 'Grapes',
     quantity: '120 MT',
+    status:
+        'Attention ; Good vehciles not assinged; Call us; Change to Self Transport',
     pickupDate: DateTime.parse('2023-09-27 16:00:00Z'),
   );
 }
@@ -42,6 +44,7 @@ CommodityTicket commodityTicket3() {
     goodMovement: 'Inward',
     commodity: 'Rice',
     quantity: '80 MT',
+    status: 'Attention ; Need OTPs to confirm loading complete; Generate OTP',
     pickupDate: DateTime.parse('2023-10-10 09:30:00Z'),
   );
 }
@@ -58,5 +61,38 @@ CommodityTicket commodityTicket4() {
     commodity: 'Tomatoes',
     quantity: '60 MT',
     pickupDate: DateTime.parse('2023-09-30 14:15:00Z'),
+  );
+}
+
+CommodityTicket commodityTicket5() {
+  return CommodityTicket(
+    id: '0005',
+    ticketNumber: '00005',
+    commodityOwnerId: '00001',
+    contactPersonId: '00004',
+    pickUpAddressId: '00002',
+    destinationAddressId: '00003',
+    goodMovement: 'Inward',
+    commodity: 'Tomatoes',
+    quantity: '60 MT',
+    status:
+        'Completed ; Qulaity check completed and added to warehouse; View Certificate; Get Loan; Start trading',
+    pickupDate: DateTime.parse('2023-10-10 09:30:00Z'),
+  );
+}
+
+CommodityTicket commodityTicket6() {
+  return CommodityTicket(
+    id: '00006',
+    ticketNumber: '00006',
+    commodityOwnerId: '00002',
+    contactPersonId: '00003',
+    pickUpAddressId: '00004',
+    destinationAddressId: '00001',
+    goodMovement: 'Inward',
+    commodity: 'Wheat',
+    quantity: '100 MT',
+    transportType: 'self',
+    pickupDate: DateTime.parse('2023-10-03 08:00:00Z'),
   );
 }

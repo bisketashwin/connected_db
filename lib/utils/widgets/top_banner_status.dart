@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../constants/constants_1.dart';
 
 Widget topBannerStatus(
     {required context,
-    required int status,
+    goodMovement = '',
+    String status = 'not strated',
     timeString = '',
     textStle = 'bodySmall',
     noRound = false}) {
@@ -20,37 +22,22 @@ Widget topBannerStatus(
   Radius borderRadius =
       noRound ? const Radius.circular(0) : const Radius.circular(12.0);
 
-  switch (status) {
-    case 0:
-      {
-        statusColor = CommodityTicketStatus.notStarted.color;
-        statusIcon = FontAwesomeIcons.circle;
-        statusMessage = 'NOT STARTED YET';
-      }
-      break;
-
-    case 1:
-      {
-        statusColor = CommodityTicketStatus.inProgress.color;
-        statusIcon = FontAwesomeIcons.circleHalfStroke;
-        statusMessage = 'IN PORGRESS';
-      }
-      break;
-    case 2:
-      {
-        statusColor = CommodityTicketStatus.needsAttention.color;
-        statusIcon = FontAwesomeIcons.circleExclamation;
-        statusMessage = 'NEEDS YOUR ATTENTION';
-      }
-      break;
-
-    default:
-      {
-        statusColor = CommodityTicketStatus.completed.color;
-        statusIcon = FontAwesomeIcons.circleCheck;
-        statusMessage = 'TASK COMPLETED';
-      }
-      break;
+  if (status.isCaseInsensitiveContainsAny('Completed')) {
+    statusColor = CommodityTicketStatus.completed.color;
+    statusIcon = FontAwesomeIcons.circleCheck;
+    statusMessage = 'TASK COMPLETED';
+  } else if (status.isCaseInsensitiveContainsAny('progress')) {
+    statusColor = CommodityTicketStatus.inProgress.color;
+    statusIcon = FontAwesomeIcons.circleHalfStroke;
+    statusMessage = 'IN PORGRESS';
+  } else if (status.isCaseInsensitiveContainsAny('attention')) {
+    statusColor = CommodityTicketStatus.needsAttention.color;
+    statusIcon = FontAwesomeIcons.circleExclamation;
+    statusMessage = 'NEEDS YOUR ATTENTION';
+  } else {
+    statusColor = CommodityTicketStatus.notStarted.color;
+    statusIcon = FontAwesomeIcons.circle;
+    statusMessage = 'NOT STARTED YET';
   }
 
   switch (textStle) {
@@ -81,6 +68,10 @@ Widget topBannerStatus(
           // mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              '$goodMovement  '.toUpperCase(),
+              style: TextStyle(fontWeight: FontWeight.w600),
+            ),
             FaIcon(
               statusIcon,
               size: 16,
