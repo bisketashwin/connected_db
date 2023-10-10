@@ -8,6 +8,9 @@ import 'package:provider/provider.dart';
 import '../../app_routes.dart';
 import '../commonactions/common_actions.dart';
 
+//Alerts sub segregated as QC done
+//TODO: other there could be more specific call to action in alert that need to be worked on
+
 class addCommodityMin1 extends StatefulWidget {
   final List<CommodityTicket> commodityTickets;
   final int index;
@@ -26,6 +29,9 @@ class _MyAppState extends State<addCommodityMin1> {
   late List<CommodityTicket> commodityTickets = widget.commodityTickets;
   late int index = widget.index;
   bool showDetails = false;
+  double bottomPadding = 15;
+  String ticketStatus = '';
+
   @override
   Widget build(BuildContext context) {
     return addCommDetails(context, this);
@@ -60,6 +66,17 @@ class _MyAppState extends State<addCommodityMin1> {
         warehouseAddresses.firstWhere((address) => address.id == destId);
     User user = users.firstWhere((user) => user.id == userId);
 
+    if (commodityTicket.status.isCaseInsensitiveContainsAny('attention')) {
+      ticketStatus = commodityTicket.status;
+      showDetails = true;
+      bottomPadding = 0;
+    } else if (commodityTicket.status
+        .isCaseInsensitiveContainsAny('complete')) {
+      ticketStatus = commodityTicket.status;
+      showDetails = true;
+      bottomPadding = 0;
+    }
+
     ///////////
     var color1 = Theme.of(context).colorScheme.onBackground.withOpacity(0.6);
     var defaultTextStyle = Theme.of(context).textTheme.bodySmall;
@@ -83,12 +100,12 @@ class _MyAppState extends State<addCommodityMin1> {
                 goodMovement: commodityTicket.goodMovement,
                 context: context,
                 status: commodityTicket.status,
-                timeString: DateFormat('  d MMM yyyy')
+                timeString: DateFormat(': d MMM yyyy')
                     .format(commodityTicket.pickupDate),
               ),
               Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, bottom: 15, top: 5),
+                  padding: EdgeInsets.only(
+                      left: 15, right: 15, bottom: bottomPadding, top: 5),
                   child: Column(children: [
                     DefaultTextStyle(
                         style: defaultTextStyle!,
@@ -148,13 +165,23 @@ class _MyAppState extends State<addCommodityMin1> {
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
                               const Divider(),
+                              Text(
+                                'Destination - ${destAd.firmName}, ${destAd.villageOrTaluk}',
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
                               Visibility(
-                                  visible: !showDetails,
-                                  child: Text(
-                                    'Destination - ${destAd.firmName}, ${destAd.villageOrTaluk}',
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
-                                  ))
+                                  visible: showDetails,
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      const Divider(
+                                        height: 0,
+                                      ),
+                                      getButtons(ticketStatus, context),
+                                    ],
+                                  )),
                             ]))
                   ]))
             ],

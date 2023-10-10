@@ -8,6 +8,7 @@ enum CommodityTicketStatus {
   notStarted,
   inProgress,
   needsAttention,
+  qcComplete,
   halted,
   completed,
   inward,
@@ -22,9 +23,11 @@ extension CommodityTicketStatusColor on CommodityTicketStatus {
       case CommodityTicketStatus.inProgress:
         return const Color(0xFFFFC268);
       case CommodityTicketStatus.needsAttention:
-        return Color.fromARGB(255, 239, 93, 93);
+        return Color.fromARGB(255, 246, 104, 104);
       case CommodityTicketStatus.needsAttention:
         return const Color(0xFF787878);
+      case CommodityTicketStatus.qcComplete:
+        return Color.fromARGB(255, 246, 117, 243);
       case CommodityTicketStatus.completed:
         return Color.fromARGB(255, 85, 226, 134);
       case CommodityTicketStatus.inward:

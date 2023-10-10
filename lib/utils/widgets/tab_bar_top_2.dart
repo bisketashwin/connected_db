@@ -45,7 +45,7 @@ Widget myTabBar2({required context}) {
               children: [
                 Icon(Icons.arrow_downward_rounded),
                 Text(
-                  'INWARD',
+                  'IN',
                 )
               ],
             ),
@@ -62,7 +62,7 @@ Widget myTabBar2({required context}) {
               children: [
                 Icon(Icons.arrow_upward_rounded),
                 Text(
-                  'OUTWARD',
+                  'OUT',
                 )
               ],
             ),

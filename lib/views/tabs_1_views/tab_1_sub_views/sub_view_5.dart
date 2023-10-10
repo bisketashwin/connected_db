@@ -10,10 +10,10 @@ import '../../../utils/models/controllers.dart';
 import '../../../utils/models/models.dart';
 import '../../../utils/widgets/widgets.dart';
 
-class SubSiew3 extends StatefulWidget {
+class SubSiew5 extends StatefulWidget {
   //final context;
 
-  const SubSiew3({
+  const SubSiew5({
     super.key,
   });
 
@@ -21,7 +21,7 @@ class SubSiew3 extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<SubSiew3> {
+class _MyAppState extends State<SubSiew5> {
   @override
   Widget build(BuildContext context) {
     List<CommodityTicket> commodityTickets =
@@ -44,13 +44,14 @@ class _MyAppState extends State<SubSiew3> {
 
               ///NOTE:  these 3 are super critical properties for nested lsit views to wrok
               itemCount: commodityTickets.length,
-
               itemBuilder: (context, index) {
-                bool thisAttention = commodityTickets[index]
+                String thisGoodMovement = commodityTickets[index].goodMovement;
+                bool thisComplete = commodityTickets[index]
                     .status
-                    .isCaseInsensitiveContainsAny('attention');
-
-                if (thisAttention == true) {
+                    .isCaseInsensitiveContainsAny('complete');
+                debugPrint(
+                    'index = $index Good movement = $thisGoodMovement complete = $thisComplete');
+                if (thisGoodMovement == 'Outward' && thisComplete == false) {
                   return addCommodityMin1(
                       commodityTickets: commodityTickets, index: index);
                 } else {

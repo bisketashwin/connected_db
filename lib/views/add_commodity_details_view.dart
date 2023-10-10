@@ -5,8 +5,11 @@ import 'package:material3_app/utils/models/models.dart';
 import 'package:material3_app/utils/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
+import '../theme/custom_color.dart';
 import '../utils/commonactions/common_actions.dart';
 
+//Alerts sub segregated as QC done
+//TODO: other there could be more specific call to action in alert that need to be worked on
 class AddCommodityDetailsView extends StatefulWidget {
   final int index;
 
@@ -23,8 +26,10 @@ class _MyAppState extends State<AddCommodityDetailsView> {
   // late List<CommodityTicket> commodityTickets = widget.commodityTickets;
   // late int index = widget.index;
   final int index = Get.arguments['index']; // this is getX implementation
+  bool showDetails = false;
+  double bottomPadding = 15;
+  String ticketStatus = '';
 
-  bool showDetails = true;
   @override
   Widget build(BuildContext context) {
     return addCommDetails(context, this);
@@ -60,127 +65,157 @@ class _MyAppState extends State<AddCommodityDetailsView> {
           warehouseAddresses.firstWhere((address) => address.id == destId);
       User user = users.firstWhere((user) => user.id == userId);
 
+      if (commodityTicket.status.isCaseInsensitiveContainsAny('attention')) {
+        ticketStatus = commodityTicket.status;
+        showDetails = true;
+        bottomPadding = 0;
+      } else if (commodityTicket.status
+          .isCaseInsensitiveContainsAny('complete')) {
+        ticketStatus = commodityTicket.status;
+        showDetails = true;
+        bottomPadding = 0;
+      }
+
       ///////////
       var color1 = Theme.of(context).colorScheme.onBackground.withOpacity(0.6);
       var defaultTextStyle = Theme.of(context).textTheme.bodyLarge;
+      var color2 =
+          Theme.of(context).extension<CustomColors>()!.sourceCustomcolor2;
 
       return Scaffold(
-        appBar: AppBar(
-          title: Text('Commodity Details'),
+        bottomSheet: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5.0),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey,
+                offset: Offset(0.0, -0.5), //(x,y)
+                blurRadius: 6.0,
+              ),
+            ],
+          ),
+          height: 60,
+          // color: color2,
+          child: Visibility(
+              visible: showDetails,
+              child: Padding(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: getBigButtons(ticketStatus, context),
+              )),
         ),
-        body: Center(
-          child: InkWell(
-            onTap: () {
-              // showDetails = !showDetails;
-              // debugPrint('showDetails = $showDetails');
-              // setState(() {});
-            },
-            child: Column(
-              children: [
-                topBannerStatus(
+        body: NestedScrollView(
+          // controller: scrollController,
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, innerBocIsScrolled) => [
+            SliverAppBar(
+              title: Text('Commodity Details 4'),
+              bottom: PreferredSize(
+                preferredSize: Size.fromHeight(15),
+                child: topBannerStatus(
                   context: context,
                   status: commodityTicket.status,
                   noRound: true,
-                  textStle: 'bodyLarge',
-                  timeString: DateFormat('  d MMM yyyy')
+                  textStle: 'bodyMedium',
+                  timeString: DateFormat(': d MMM yyyy')
                       .format(commodityTicket.pickupDate),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(15),
+              ),
+            )
+          ],
+
+          body: Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15, bottom: 50),
+            child: ListView(
+              children: [
+                DefaultTextStyle(
+                  style: defaultTextStyle!,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      DefaultTextStyle(
-                        style: defaultTextStyle!,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              children: [
-                                getGcommodityThumb(
-                                    name: commodityTicket.commodity,
-                                    size: 100.0),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '${commodityTicket.commodity}  ${commodityTicket.quantity}',
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                                Text(
-                                  'Owner: ${comOwner.firmName}',
-                                ),
-                                Row(
-                                  children: [
-                                    iconLabel(
-                                      context: context,
-                                      mainText: commodityTicket.ticketNumber,
-                                      textSize: 'bodyMedium',
-                                      color: color1,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    iconLabel(
-                                      context: context,
-                                      mainText:
-                                          '${commodityTicket.transportType} Transport',
-                                      textSize: 'bodyMedium',
-                                      color: color1,
-                                      type: 'Transport',
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Text(
-                                'Job Created by \n${user.name}  ${user.phoneNumbers}'),
-                            const Divider(),
+                      Column(
+                        children: [
+                          getGcommodityThumb(
+                              name: commodityTicket.commodity, size: 100.0),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${commodityTicket.commodity}  ${commodityTicket.quantity}',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          Text(
+                            'Owner: ${comOwner.firmName}',
+                          ),
+                          Row(
+                            children: [
+                              iconLabel(
+                                context: context,
+                                mainText: commodityTicket.ticketNumber,
+                                textSize: 'bodyMedium',
+                                color: color1,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              iconLabel(
+                                context: context,
+                                mainText:
+                                    '${commodityTicket.transportType} Transport',
+                                textSize: 'bodyMedium',
+                                color: color1,
+                                type: 'Transport',
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Text(
+                          'Job Created by \n${user.name}  ${user.phoneNumbers}'),
+                      const Divider(),
 
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Pick up',
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                                Text(pickAd.firmName),
-                                Text(pickAd.street),
-                                Text(
-                                  pickAd.villageOrTaluk,
-                                  style: TextStyle(fontWeight: FontWeight.w600),
-                                ),
-                                Text(
-                                    '${pickAd.zilla}, ${pickAd.state} - ${pickAd.pincode}'),
-                              ],
-                            ),
-                            //Text(pickAd.state),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Pick up',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          Text(pickAd.firmName),
+                          Text(pickAd.street),
+                          Text(
+                            pickAd.villageOrTaluk,
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                              '${pickAd.zilla}, ${pickAd.state} - ${pickAd.pincode}'),
+                        ],
+                      ),
+                      //Text(pickAd.state),
 
-                            const Divider(),
+                      const Divider(),
 
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Destination',
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                                Text(destAd.firmName),
-                                Text(destAd.street),
-                                Text(
-                                  destAd.villageOrTaluk,
-                                  style: TextStyle(fontWeight: FontWeight.w600),
-                                ),
-                                Text(
-                                    '${destAd.zilla}, ${destAd.state} -${destAd.pincode}'),
-                              ],
-                            ),
-                          ],
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Destination',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          Text(destAd.firmName),
+                          Text(destAd.street),
+                          Text(
+                            destAd.villageOrTaluk,
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                              '${destAd.zilla}, ${destAd.state} -${destAd.pincode}'),
+                        ],
                       ),
                     ],
                   ),

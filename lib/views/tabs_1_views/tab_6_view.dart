@@ -9,6 +9,8 @@ import '../../utils/models/models.dart';
 import '../../utils/widgets/widgets.dart';
 import 'tab_1_sub_views/sub_view_2.dart';
 import 'tab_1_sub_views/sub_view_3.dart';
+import 'tab_1_sub_views/sub_view_4.dart';
+import 'tab_1_sub_views/sub_view_5.dart';
 
 class Tab6 extends StatefulWidget {
   final VoidCallback showNavigation;
@@ -56,7 +58,7 @@ class _Tab6State extends State<Tab6> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         backgroundColor:
             Theme.of(context).extension<CustomColors>()!.sourceCustomcolor2,
@@ -73,9 +75,9 @@ class _Tab6State extends State<Tab6> {
                 floating: true,
                 snap: true,
                 // pinned: true,
-                shadowColor: Colors.transparent,
-                backgroundColor: Colors.transparent,
-                scrolledUnderElevation: 0,
+                // shadowColor: Colors.transparent,
+                // backgroundColor: Colors.transparent,
+                scrolledUnderElevation: 5,
                 leading: Builder(
                   builder: (BuildContext context) {
                     return IconButton(
@@ -116,8 +118,11 @@ class _Tab6State extends State<Tab6> {
             padding: const EdgeInsets.only(left: 5, right: 5),
             child: TabBarView(
               children: <Widget>[
+                // TODO: after adding extra screen or removing screen do this
+                // go to DefaultTabController(  length: 3, change it
                 SubSiew3(),
-                SubSiew2(),
+                SubSiew4(),
+                SubSiew5(),
               ],
             ),
           ),
@@ -127,22 +132,22 @@ class _Tab6State extends State<Tab6> {
   }
 }
 
-Widget commodityList(context) {
-  List<CommodityTicket> commodityTickets =
-      Provider.of<CommodityTicketController>(context).commodityTickets;
-  return ListView.builder(
-    shrinkWrap: true,
+// Widget commodityList(context) {
+//   List<CommodityTicket> commodityTickets =
+//       Provider.of<CommodityTicketController>(context).commodityTickets;
+//   return ListView.builder(
+//     shrinkWrap: true,
 
-    ///NOTE:  these 3 are super critical properties for nested lsit views to wrok
-    primary: false,
+//     ///NOTE:  these 3 are super critical properties for nested lsit views to wrok
+//     primary: false,
 
-    ///NOTE:  these 3 are super critical properties for nested lsit views to wrok
-    itemCount: commodityTickets.length,
-    itemBuilder: (context, index) {
-      // return Text(commodityTickets[index].companyName);
-      return addCommodityDetails1(
-          commodityTickets: commodityTickets, index: index);
-    },
-  );
-  // cardWithBanner(context, _showDetails),
-}
+//     ///NOTE:  these 3 are super critical properties for nested lsit views to wrok
+//     itemCount: commodityTickets.length,
+//     itemBuilder: (context, index) {
+//       // return Text(commodityTickets[index].companyName);
+//       return addCommodityDetails1(
+//           commodityTickets: commodityTickets, index: index);
+//     },
+//   );
+//   // cardWithBanner(context, _showDetails),
+// }

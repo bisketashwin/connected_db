@@ -29,11 +29,17 @@ Widget topBannerStatus(
   } else if (status.isCaseInsensitiveContainsAny('progress')) {
     statusColor = CommodityTicketStatus.inProgress.color;
     statusIcon = FontAwesomeIcons.circleHalfStroke;
-    statusMessage = 'IN PORGRESS';
+    statusMessage = status.toUpperCase();
   } else if (status.isCaseInsensitiveContainsAny('attention')) {
-    statusColor = CommodityTicketStatus.needsAttention.color;
-    statusIcon = FontAwesomeIcons.circleExclamation;
-    statusMessage = 'NEEDS YOUR ATTENTION';
+    if (status.isCaseInsensitiveContainsAny('QC done')) {
+      statusColor = CommodityTicketStatus.qcComplete.color;
+      statusIcon = FontAwesomeIcons.solidCircleCheck;
+      statusMessage = status.toUpperCase();
+    } else {
+      statusColor = CommodityTicketStatus.needsAttention.color;
+      statusIcon = FontAwesomeIcons.circleExclamation;
+      statusMessage = 'NEEDS ATTENTION';
+    }
   } else {
     statusColor = CommodityTicketStatus.notStarted.color;
     statusIcon = FontAwesomeIcons.circle;
@@ -69,7 +75,8 @@ Widget topBannerStatus(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '$goodMovement  '.toUpperCase(),
+              goodMovement == 'Outward' ? 'OUT ' : 'IN ',
+              // '$goodMovement  '.toUpperCase(),
               style: TextStyle(fontWeight: FontWeight.w600),
             ),
             FaIcon(
@@ -78,13 +85,13 @@ Widget topBannerStatus(
               color: color1,
             ),
             const SizedBox(
-              width: 5,
+              width: 2,
             ),
             Text(
               statusMessage,
             ),
             const SizedBox(
-              width: 10,
+              width: 5,
             ),
             FaIcon(
               FontAwesomeIcons.arrowRight,

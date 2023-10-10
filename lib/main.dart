@@ -128,6 +128,10 @@ void createDummyCommodityTickets(BuildContext context) {
   commodityTicketController.addCommodityTicket(commodityTicket4());
   commodityTicketController.addCommodityTicket(commodityTicket5());
   commodityTicketController.addCommodityTicket(commodityTicket6());
+  commodityTicketController.addCommodityTicket(commodityTicket7());
+  commodityTicketController.addCommodityTicket(commodityTicket8());
+  commodityTicketController.addCommodityTicket(commodityTicket9());
+  commodityTicketController.addCommodityTicket(commodityTicket10());
 
   List<CommodityTicket> commodityTickets =
       Provider.of<CommodityTicketController>(context, listen: false)

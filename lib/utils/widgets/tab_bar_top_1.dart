@@ -23,9 +23,19 @@ Widget myTabBar1({required context}) {
       Tab(
         child: Row(
           children: [
+            Icon(Icons.notifications_active),
+            Text(
+              'ALERT',
+            )
+          ],
+        ),
+      ),
+      Tab(
+        child: Row(
+          children: [
             Icon(Icons.arrow_downward_rounded),
             Text(
-              'INWARD',
+              'IN',
             )
           ],
         ),
@@ -35,7 +45,7 @@ Widget myTabBar1({required context}) {
           children: [
             Icon(Icons.arrow_upward_rounded),
             Text(
-              'OUTWARD',
+              'OUT',
             ),
           ],
         ),

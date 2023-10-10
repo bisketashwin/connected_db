@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'tabs_1_views/tabs_1_views.dart';
 
@@ -52,19 +53,19 @@ class _HomeView3State extends State<HomeView3> {
               selectedIndex: currentIndex,
               destinations: const <Widget>[
                 NavigationDestination(
-                  selectedIcon: Icon(Icons.home),
-                  icon: Icon(Icons.home_outlined),
+                  selectedIcon: FaIcon(FontAwesomeIcons.truck),
+                  icon: FaIcon(FontAwesomeIcons.truckFast),
                   label: 'Move Goods',
                 ),
                 NavigationDestination(
-                  selectedIcon: Icon(Icons.business),
-                  icon: Icon(Icons.business_outlined),
-                  label: 'Business',
+                  selectedIcon: FaIcon(FontAwesomeIcons.moneyBill1Wave),
+                  icon: FaIcon(FontAwesomeIcons.moneyBillTrendUp),
+                  label: 'Loan or Sell',
                 ),
                 NavigationDestination(
-                  selectedIcon: Icon(Icons.school),
-                  icon: Icon(Icons.school_outlined),
-                  label: 'School',
+                  selectedIcon: FaIcon(FontAwesomeIcons.boxesStacked),
+                  icon: FaIcon(FontAwesomeIcons.warehouse),
+                  label: 'Stock',
                 ),
               ],
             ),
