@@ -13,10 +13,9 @@ CommodityLot _$CommodityLotFromJson(Map<String, dynamic> json) => CommodityLot(
       lotNumber: json['lotNumber'] as String? ?? 'not assigned',
       deliveryNote: json['deliveryNote'] as String? ?? 'not available',
       listOfMediaPaths: (json['listOfMediaPaths'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const ['not available'],
-      approvedBy: json['approvedBy'] as String? ?? 'not available',
+          ?.map((e) => e as String)
+          .toList(),
+      approvedById: json['approvedById'] as String? ?? '00000',
       approximateWeight:
           json['approximateWeight'] as String? ?? 'not available',
       weighbridge: json['weighbridge'] as String? ?? 'not available',
@@ -36,7 +35,7 @@ Map<String, dynamic> _$CommodityLotToJson(CommodityLot instance) =>
       'lotNumber': instance.lotNumber,
       'deliveryNote': instance.deliveryNote,
       'listOfMediaPaths': instance.listOfMediaPaths,
-      'approvedBy': instance.approvedBy,
+      'approvedById': instance.approvedById,
       'approximateWeight': instance.approximateWeight,
       'weighbridge': instance.weighbridge,
       'inwardsReceipt': instance.inwardsReceipt,

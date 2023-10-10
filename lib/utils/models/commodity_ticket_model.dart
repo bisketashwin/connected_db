@@ -56,6 +56,16 @@ class CommodityTicketController extends ChangeNotifier {
     return _uuid.v4();
   }
 
+  // Add a function to serialize a CommodityTicket object to JSON.
+  String serializeCommodityTicketToJson(CommodityTicket commodityTicket) {
+    return jsonEncode(commodityTicket.toJson());
+  }
+
+  // Add a function to deserialize a JSON string to a CommodityTicket object.
+  CommodityTicket deserializeCommodityTicketFromJson(String json) {
+    return _$CommodityTicketFromJson(jsonDecode(json));
+  }
+
   // Add a function to create a new commodity ticket.
   void addCommodityTicket(CommodityTicket commodityTicket) {
     _commodityTickets.add(commodityTicket);
@@ -73,15 +83,5 @@ class CommodityTicketController extends ChangeNotifier {
   void deleteCommodityTicket(CommodityTicket commodityTicket) {
     _commodityTickets.remove(commodityTicket);
     notifyListeners();
-  }
-
-  // Add a function to serialize a CommodityTicket object to JSON.
-  String serializeCommodityTicketToJson(CommodityTicket commodityTicket) {
-    return jsonEncode(commodityTicket.toJson());
-  }
-
-  // Add a function to deserialize a JSON string to a CommodityTicket object.
-  CommodityTicket deserializeCommodityTicketFromJson(String json) {
-    return _$CommodityTicketFromJson(jsonDecode(json));
   }
 }

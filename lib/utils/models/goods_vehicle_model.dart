@@ -9,26 +9,27 @@ part 'goods_vehicle_model.g.dart';
 @JsonSerializable(explicitToJson: true)
 class GoodsVehicle {
   String id; // - for connecting the DB tables - used in commodity lot
-  String commodityLotId; // as driver needs to access and input data
+  List<String>? timeTableEntryId; // as driver needs to access and input data
   //access to pick up and destination address
   String registrationNumber; // complete vehicle registration number
   String unloadedWeight; // to caluculate wight of good in wight bridge
+  String vehicleModel;
+  String vehicleSize;
   String covered; // for owner to decide if this is right type of vehicle
   String loadCarryingCapacity; // for owner to decide how much to load
   String driverName; // for contact by company or customer
   String driverContactNumber; // for contact by company or customer
-  // DateTime timeOfArrival; // TODO: commneted as not able to assign defult value
 
   GoodsVehicle({
     this.id = '00000',
-    this.commodityLotId = '00000',
     this.registrationNumber = 'not assigned',
     this.unloadedWeight = 'not assigned',
+    this.vehicleModel = 'not assigned',
+    this.vehicleSize = 'not assigned',
     this.covered = 'not assigned',
     this.loadCarryingCapacity = 'not assigned',
     this.driverName = 'not assigned',
     this.driverContactNumber = 'not assigned',
-    // this.timeOfArrival = DateTime(2017, 9, 7, 17, 30),
   });
 
   factory GoodsVehicle.fromJson(Map<String, dynamic> json) =>
@@ -48,12 +49,6 @@ class GoodsVehicleController extends ChangeNotifier {
     return _uuid.v4();
   }
 
-  // Add a function to create a new commodity ticket.
-  void addGoodsVehicle(GoodsVehicle goodsVehicle) {
-    _goodsVehicles.add(goodsVehicle);
-    notifyListeners();
-  }
-
   // Add a function to serialize a GoodsVehicle object to JSON.
   String serializeGoodsVehicleToJson(GoodsVehicle goodsVehicle) {
     return jsonEncode(goodsVehicle.toJson());
@@ -62,6 +57,12 @@ class GoodsVehicleController extends ChangeNotifier {
   // Add a function to deserialize a JSON string to a GoodsVehicle object.
   GoodsVehicle deserializeGoodsVehicleFromJson(String json) {
     return _$GoodsVehicleFromJson(jsonDecode(json));
+  }
+
+  // Add a function to create a new commodity ticket.
+  void addGoodsVehicle(GoodsVehicle goodsVehicle) {
+    _goodsVehicles.add(goodsVehicle);
+    notifyListeners();
   }
 
   // Add a function to edit a commodity ticket.

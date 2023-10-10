@@ -17,6 +17,28 @@ CommodityTicket commodityTicket1() {
   );
 }
 
+CommodityLot commodityLot1() {
+  return CommodityLot(
+      id: "1234567890",
+      commodityTicketId: "9876543210",
+      goodsVehicleId: "ABCD1234",
+      lotNumber: "LOT-12345",
+      deliveryNote: "/path/to/delivery_note.pdf",
+      listOfMediaPaths: [
+        "/path/to/media_1.jpg",
+        "/path/to/media_2.jpg",
+        "/path/to/media_3.jpg"
+      ],
+      approvedById: "1234567890",
+      approximateWeight: "100",
+      weighbridge: "90",
+      inwardsReceipt: "/path/to/inwards_receipt.pdf",
+      unloaded: "true",
+      processing: "false",
+      qualityCheckPassed: "false",
+      qcCertificate: "/path/to/qc_certificate.pdf");
+}
+
 CommodityTicket commodityTicket2() {
   return CommodityTicket(
     id: '00002',

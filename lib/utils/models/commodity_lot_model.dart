@@ -18,8 +18,8 @@ class CommodityLot {
   ////// Bellow 4 data - not required for self transport////////////
   String deliveryNote; // image or PDF of the delivery note (with all details)
   ///////////signed by Contact person mentioned in the commodity ticket  - for showing RTO
-  List<String> listOfMediaPaths; //  for anyone to confirm
-  String approvedBy; // contact person from commodity ticket or POC farm/org
+  List<String>? listOfMediaPaths; //  for anyone to confirm
+  String approvedById; //User id from Users list
 
   ////////////////// Applicable to all cases /////////////////
   String approximateWeight; //  claimed by the contact person
@@ -40,8 +40,8 @@ class CommodityLot {
     this.goodsVehicleId = 'not assigned',
     this.lotNumber = 'not assigned',
     this.deliveryNote = 'not available',
-    this.listOfMediaPaths = const ['not available'],
-    this.approvedBy = 'not available',
+    this.listOfMediaPaths,
+    this.approvedById = '00000',
     this.approximateWeight = 'not available',
     this.weighbridge = 'not available',
     this.inwardsReceipt = 'not available',

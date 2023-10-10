@@ -37,6 +37,16 @@ class CommodityOwnerController extends ChangeNotifier {
   UnmodifiableListView<CommodityOwner> get commodityOwners =>
       UnmodifiableListView(_commodityOwners);
 
+  // Add a function to serialize a CommodityTicket object to JSON.
+  String serializeCommodityOwnerToJson(CommodityOwner commodityOwner) {
+    return jsonEncode(commodityOwner.toJson());
+  }
+
+  // Add a function to deserialize a JSON string to a CommodityTicket object.
+  CommodityOwner deserializeCommodityOwnerFromJson(String json) {
+    return _$CommodityOwnerFromJson(jsonDecode(json));
+  }
+
   void addCommodityOwner(CommodityOwner commodityOwner) {
     // Create a 3-letter capitalized abbreviation of the commodity owner.
     String abbreviation = commodityOwner.firmName.substring(0, 3).toUpperCase();
@@ -48,16 +58,6 @@ class CommodityOwnerController extends ChangeNotifier {
 
     // Notify listeners that the list of commodity owners has changed.
     notifyListeners();
-  }
-
-  // Add a function to serialize a CommodityTicket object to JSON.
-  String serializeCommodityOwnerToJson(CommodityOwner commodityOwner) {
-    return jsonEncode(commodityOwner.toJson());
-  }
-
-  // Add a function to deserialize a JSON string to a CommodityTicket object.
-  CommodityOwner deserializeCommodityOwnerFromJson(String json) {
-    return _$CommodityOwnerFromJson(jsonDecode(json));
   }
 
   void editCommodityOwner(int index, CommodityOwner commodityOwner) {
