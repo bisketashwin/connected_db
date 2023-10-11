@@ -8,7 +8,7 @@ Widget cardWithBanner(BuildContext context, showDetails) {
   return GestureDetector(
     onTap: () {
       showDetails['card 1'] = !showDetails['card 1'];
-      debugPrint('_showDetails[card 1] = ${showDetails['card 1']}');
+      //debugPrint('_showDetails[card 1] = ${showDetails['card 1']}');
       // setState(() {});
     },
     child: Card(

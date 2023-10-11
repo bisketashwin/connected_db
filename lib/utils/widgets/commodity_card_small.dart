@@ -13,7 +13,7 @@ Widget commodityCardSmall(context, commodityTickets, index) {
     child: GestureDetector(
       onDoubleTap: () {
         showDetails = !showDetails;
-        debugPrint('showDetails = $showDetails');
+        //debugPrint('showDetails = $showDetails');
       },
       child: Card(
         child: Column(

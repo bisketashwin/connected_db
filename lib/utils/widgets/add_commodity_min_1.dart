@@ -85,7 +85,7 @@ class _MyAppState extends State<addCommodityMin1> {
       child: InkWell(
         onTap: () {
           // showDetails = !showDetails;
-          // debugPrint('showDetails = $showDetails');
+          // //debugPrint('showDetails = $showDetails');
           // setState(() {});
 
           // this is getX implementation

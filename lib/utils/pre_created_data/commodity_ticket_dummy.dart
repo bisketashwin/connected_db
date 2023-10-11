@@ -17,12 +17,12 @@ CommodityTicket commodityTicket1() {
   );
 }
 
-CommodityLot commodityLot1() {
+CommodityLot commTicket1CommodityLot1() {
   return CommodityLot(
-      id: "1234567890",
-      commodityTicketId: "9876543210",
-      goodsVehicleId: "ABCD1234",
-      lotNumber: "LOT-12345",
+      id: "00001",
+      commodityTicketId: "00001",
+      goodsVehicleId: "00006",
+      lotNumber: "LOT-00001",
       deliveryNote: "/path/to/delivery_note.pdf",
       listOfMediaPaths: [
         "/path/to/media_1.jpg",

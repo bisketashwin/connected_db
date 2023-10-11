@@ -64,7 +64,7 @@ class _MyAppState extends State<addCommodityDetails1> {
       child: InkWell(
         onTap: () {
           showDetails = !showDetails;
-          debugPrint('showDetails = $showDetails');
+          //debugPrint('showDetails = $showDetails');
           setState(() {});
         },
         child: Card(

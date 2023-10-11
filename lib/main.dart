@@ -137,7 +137,7 @@ void createDummyCommodityTickets(BuildContext context) {
       Provider.of<CommodityTicketController>(context, listen: false)
           .commodityTickets;
 
-  debugPrint('checking if the list is created ${commodityTickets.length}');
+  //debugPrint('checking if the list is created ${commodityTickets.length}');
 
   // GoodsVehicleController goodsVehicleController =
   //     Provider.of<GoodsVehicleController>(context, listen: false);

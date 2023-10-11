@@ -49,8 +49,7 @@ class _MyAppState extends State<SubSiew5> {
                 bool thisComplete = commodityTickets[index]
                     .status
                     .isCaseInsensitiveContainsAny('complete');
-                debugPrint(
-                    'index = $index Good movement = $thisGoodMovement complete = $thisComplete');
+                //debugPrint('index = $index Good movement = $thisGoodMovement complete = $thisComplete');
                 if (thisGoodMovement == 'Outward' && thisComplete == false) {
                   return addCommodityMin1(
                       commodityTickets: commodityTickets, index: index);
